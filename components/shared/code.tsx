@@ -4,7 +4,7 @@ import { CodeCopyButton } from './code-copy-button';
 
 type CodeProps = Omit<React.HTMLAttributes<HTMLDivElement>, 'children'> &
   GetCodeOptions & {
-    children?: string;
+    children?: string | string[];
     disableCopy?: boolean;
   };
 
@@ -19,12 +19,9 @@ export const Code = async ({
   const code = await getCode(children ?? '', { lang, decorations });
 
   return (
-    <div className='relative'>
+    <div className={cn('relative', className)}>
       <div
-        className={cn(
-          'rounded-xl border bg-code p-4 font-mono text-sm *:!bg-transparent',
-          className
-        )}
+        className='overflow-auto rounded-xl border bg-code p-4 font-mono text-sm *:!bg-transparent'
         dangerouslySetInnerHTML={{ __html: code }}
         {...props}
       />

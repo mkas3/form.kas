@@ -4,10 +4,11 @@ import { Mark } from '@/components/shared/mark';
 import { Section } from '@/components/shared/section';
 import { Subsection } from '@/components/shared/subsection';
 import { SubsectionDescription } from '@/components/shared/subsection-description';
+import { ComponentProps } from '@/app/components/_components/component-props';
+import { CheckboxExampleRegistration } from '@/app/components/_components/examples/checkbox/checkbox-example-registration';
 
 import { Component } from '../_components/component';
 import { ComponentInstallation } from '../_components/component-installation';
-import { CheckboxExample1 } from '../_components/examples/checkbox/example-1';
 
 export default function CheckboxPage() {
   return (
@@ -16,49 +17,84 @@ export default function CheckboxPage() {
       description='A control that allows the user to toggle between checked and not checked.'
       links={[
         {
-          heading: 'shadcn/ui reference',
+          heading: 'Base Component',
           href: 'https://ui.shadcn.com/docs/components/checkbox',
+        },
+        {
+          heading: 'Docs',
+          href: 'https://www.radix-ui.com/primitives/docs/components/checkbox',
+        },
+        {
+          heading: 'API Reference',
+          href: 'https://www.radix-ui.com/primitives/docs/components/checkbox#api-reference',
         },
       ]}
     >
       <Example
-        folderName='checkbox'
-        fileName='example-1.tsx'
-        component={<CheckboxExample1 />}
-      />
-      <Section heading='Installation'>
-        <ComponentInstallation />
-      </Section>
+        folderNames={[
+          'app',
+          'components',
+          '_components',
+          'examples',
+          'checkbox',
+        ]}
+        fileName='checkbox-example-registration.tsx'
+      >
+        <CheckboxExampleRegistration />
+      </Example>
       <Section heading='Usage'>
         <Code>
-          {'import {\n' +
-            '  Carousel,\n' +
-            '  CarouselContent,\n' +
-            '  CarouselItem,\n' +
-            '  CarouselNext,\n' +
-            '  CarouselPrevious,\n' +
-            '} from "@/components/ui/carousel"'}
-        </Code>
-        <Code>
-          {'<Carousel>\n' +
-            '  <CarouselContent>\n' +
-            '    <CarouselItem>...</CarouselItem>\n' +
-            '    <CarouselItem>...</CarouselItem>\n' +
-            '    <CarouselItem>...</CarouselItem>\n' +
-            '  </CarouselContent>\n' +
-            '  <CarouselPrevious />\n' +
-            '  <CarouselNext />\n' +
-            '</Carousel>'}
+          {'<Form form={form} onSubmit={handleSubmit}>\n' +
+            '\t<FormFieldItem<FormProps> name="checkbox">\n' +
+            '\t\t<FormCheckbox />\n' +
+            '\t</FormFieldItem>\n' +
+            '\t<Button type="submit" />\n' +
+            '</Form>'}
         </Code>
       </Section>
-      <Section heading='Examples'>
-        <Subsection heading='Sizes'>
+      <Section heading='Installation'>
+        <ComponentInstallation
+          shadcnDependencies={['form', 'checkbox']}
+          componentFileName='form-checkbox.tsx'
+          hasDefaultValueHook
+        />
+      </Section>
+      <Section heading='API Reference'>
+        <Subsection heading='Checkbox'>
           <SubsectionDescription>
-            {
-              'To set the size of the items, you can use the basis utility class on the'
-            }{' '}
-            <Mark>{'<CarouselItem />'}</Mark>.
+            The Checkbox has a <Mark>checked</Mark> equal to prop{' '}
+            <Mark>defaultChecked</Mark> when mounted.
           </SubsectionDescription>
+          <ComponentProps
+            componentProps={[
+              {
+                prop: 'checked',
+                type: 'boolean',
+                default: 'defaultChecked',
+              },
+              {
+                prop: 'defaultChecked',
+                type: 'boolean',
+                default: 'false',
+              },
+            ]}
+          />
+        </Subsection>
+      </Section>
+      <Section heading='Examples'>
+        <Subsection heading='Registration Form'>
+          <Example
+            folderNames={[
+              'app',
+              'components',
+              '_components',
+              'examples',
+              'checkbox',
+            ]}
+            fileName='checkbox-example-registration.tsx'
+          >
+            <CheckboxExampleRegistration />
+          </Example>
         </Subsection>
       </Section>
     </Component>

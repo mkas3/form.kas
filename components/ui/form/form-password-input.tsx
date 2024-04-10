@@ -28,10 +28,12 @@ const FormPasswordInputContext = createContext<FormPasswordInputContext>({
 
 const FormPasswordInput = forwardRef<
   React.ElementRef<typeof FormPasswordInputArea>,
-  React.ComponentPropsWithoutRef<typeof FormPasswordInputArea>
->(({ children, ...props }, ref) => {
+  React.ComponentPropsWithoutRef<typeof FormPasswordInputArea> & {
+    defaultPressed?: boolean;
+  }
+>(({ defaultPressed, children, ...props }, ref) => {
   return (
-    <FormPasswordInputRoot>
+    <FormPasswordInputRoot defaultPressed={defaultPressed}>
       <FormPasswordInputContent>
         <FormPasswordInputArea ref={ref} {...props} />
         {!children && <FormPasswordInputToggle />}
@@ -42,8 +44,14 @@ const FormPasswordInput = forwardRef<
 });
 FormPasswordInput.displayName = 'FormPasswordInput';
 
-const FormPasswordInputRoot = ({ children }: { children: React.ReactNode }) => {
-  const [pressed, setPressed] = useState(false);
+const FormPasswordInputRoot = ({
+  children,
+  defaultPressed = false,
+}: {
+  children: React.ReactNode;
+  defaultPressed?: boolean;
+}) => {
+  const [pressed, setPressed] = useState(defaultPressed);
 
   return (
     <FormPasswordInputContext.Provider value={{ pressed, setPressed }}>

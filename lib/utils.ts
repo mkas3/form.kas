@@ -1,5 +1,5 @@
 import type { ClassValue } from 'clsx';
-import type { BundledLanguage } from 'shiki';
+import type { CodeToHastOptions } from 'shiki';
 
 import { clsx } from 'clsx';
 import { codeToHtml } from 'shiki';
@@ -10,14 +10,17 @@ export function cn(...inputs: ClassValue[]) {
 }
 
 export type GetCodeOptions = Omit<
-  Parameters<typeof codeToHtml>[1],
+  CodeToHastOptions,
   'lang' | 'theme' | 'themes'
 > &
-  Pick<Partial<Parameters<typeof codeToHtml>[1]>, 'lang'>;
+  Pick<Partial<CodeToHastOptions>, 'lang'>;
 
-export function getCode(code: string, options?: GetCodeOptions) {
+export function getCode(code: string | string[], options?: GetCodeOptions) {
   const { lang, ...otherOptions } = options ?? {};
-  return codeToHtml(code, {
+
+  const stringCode = typeof code === 'string' ? code : code.join('');
+
+  return codeToHtml(stringCode, {
     lang: lang ?? 'tsx',
     theme: 'github-dark-default',
     ...otherOptions,

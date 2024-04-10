@@ -1,6 +1,8 @@
+'use client';
+
 import { forwardRef, useImperativeHandle } from 'react';
 import { useController } from 'react-hook-form';
-import MaskedInput, { conformToMask, MaskedInputProps } from 'react-text-mask';
+import MaskedInput, { MaskedInputProps } from 'react-text-mask';
 
 import { useFormDefaultValue } from '@/hooks/use-form-default-value';
 import { FormControl, useFormField } from '@/components/ui/form';

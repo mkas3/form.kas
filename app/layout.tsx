@@ -4,6 +4,7 @@ import { siteConfig } from '@/config/site';
 import { fontMono, fontSans } from '@/lib/fonts';
 import { cn } from '@/lib/utils';
 import { Link } from '@/components/ui/link';
+import { PageWrapper } from '@/components/ui/page-wrapper';
 import { Toaster } from '@/components/ui/sonner';
 import { Footer } from '@/app/_components/footer';
 
@@ -46,8 +47,8 @@ export const metadata: Metadata = {
     images: [
       {
         url: siteConfig.ogImage,
-        width: 1200,
-        height: 630,
+        width: 150,
+        height: 150,
         alt: siteConfig.name,
       },
     ],
@@ -64,7 +65,6 @@ export const metadata: Metadata = {
     shortcut: '/favicon-16x16.png',
     apple: '/apple-touch-icon.png',
   },
-  manifest: `${siteConfig.url}/site.webmanifest`,
 };
 
 export const viewport: Viewport = {
@@ -99,7 +99,7 @@ export default function RootLayout({
             <Header />
             <main className='flex flex-1'>
               <Sidebar />
-              {children}
+              <PageWrapper>{children}</PageWrapper>
             </main>
             <Footer>
               Built by{' '}

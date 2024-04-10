@@ -8,7 +8,7 @@ import { Check, Copy } from 'lucide-react';
 import { Button } from '../ui/button';
 
 type CodeCopyButtonProps = React.ComponentPropsWithoutRef<typeof Button> & {
-  text?: string;
+  text?: string | string[];
 };
 
 export const CodeCopyButton = ({ text, ...props }: CodeCopyButtonProps) => {
@@ -16,7 +16,8 @@ export const CodeCopyButton = ({ text, ...props }: CodeCopyButtonProps) => {
 
   const handleCopyClick = async (e: React.MouseEvent<HTMLButtonElement>) => {
     if (!text) return;
-    await navigator.clipboard.writeText(text);
+    const stringText = typeof text === 'string' ? text : text.join('');
+    await navigator.clipboard.writeText(stringText);
     setCopied(true);
   };
 
@@ -34,7 +35,7 @@ export const CodeCopyButton = ({ text, ...props }: CodeCopyButtonProps) => {
   return (
     <Button
       className='absolute right-4 top-4 size-6 p-1.5'
-      variant='ghost'
+      variant='secondary'
       size='icon'
       onClick={handleCopyClick}
       {...props}

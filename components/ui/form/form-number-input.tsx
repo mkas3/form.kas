@@ -40,7 +40,7 @@ const FormNumberInput = forwardRef<
 >(
   (
     {
-      isNumericValue,
+      isNumericValue = false,
       defaultValue = '',
       defaultNumericValue,
       customInput,
@@ -81,7 +81,7 @@ const FormNumberMaskedInput = forwardRef<
 >(
   (
     {
-      isNumericValue,
+      isNumericValue = false,
       defaultValue = '',
       defaultNumericValue,
       customInput,

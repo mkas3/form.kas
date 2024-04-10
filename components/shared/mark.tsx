@@ -1,5 +1,3 @@
-import React from 'react';
-
 type MarkProps = React.HTMLAttributes<HTMLElement>;
 
 export const Mark = ({ ...props }: MarkProps) => {

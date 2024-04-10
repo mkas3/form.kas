@@ -1,3 +1,5 @@
+import { Heading } from '@/components/ui/heading';
+
 type SectionProps = {
   heading: string;
   children?: React.ReactNode;
@@ -5,10 +7,10 @@ type SectionProps = {
 
 export const Section = ({ heading, children }: SectionProps) => {
   return (
-    <div className='flex flex-col gap-y-6'>
-      <h2 className='mt-12 border-b pb-2 text-2xl font-semibold tracking-tight'>
+    <div className='flex flex-col'>
+      <Heading className='mb-6 mt-12 border-b pb-2' variant='h2'>
         {heading}
-      </h2>
+      </Heading>
       {children}
     </div>
   );

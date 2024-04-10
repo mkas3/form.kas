@@ -7,6 +7,7 @@ import { FormControl, useFormField } from '@/components/ui/form';
 import {
   InputOTP,
   InputOTPGroup,
+  InputOTPSeparator,
   InputOTPSlot,
 } from '@/components/ui/input-otp';
 
@@ -30,4 +31,11 @@ const FormInputOTPGroup = InputOTPGroup;
 
 const FormInputOTPSlot = InputOTPSlot;
 
-export { FormInputOTP, FormInputOTPGroup, FormInputOTPSlot };
+const FormInputOTPSeparator = InputOTPSeparator;
+
+export {
+  FormInputOTP,
+  FormInputOTPGroup,
+  FormInputOTPSlot,
+  FormInputOTPSeparator,
+};

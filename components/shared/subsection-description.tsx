@@ -1,4 +1,4 @@
-type SubsectionDescriptionProps = React.HTMLAttributes<HTMLDivElement>;
+type SubsectionDescriptionProps = React.HTMLAttributes<HTMLParagraphElement>;
 
 export const SubsectionDescription = ({
   ...props

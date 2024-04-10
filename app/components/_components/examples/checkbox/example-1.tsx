@@ -11,13 +11,18 @@ import {
   FormLabel,
   FormMessage,
 } from '@/components/ui/form';
+import { Form } from '@/components/ui/form/form';
+import { FormCheckbox } from '@/components/ui/form/form-checkbox';
+import { FormFieldControl } from '@/components/ui/form/form-field-control';
+import { FormFieldItem } from '@/components/ui/form/form-field-item';
 import { Label } from '@/components/ui/label';
-import { Form } from '@/components/shared/form/form';
-import { FormCheckbox } from '@/components/shared/form/form-checkbox';
-import { FormFieldControl } from '@/components/shared/form/form-field-control';
 
 const formSchema = z.object({
-  username: z.any().nullish(),
+  sidebar: z.object({
+    recents: z.boolean(),
+    home: z.boolean(),
+    applications: z.boolean(),
+  }),
 });
 
 type FormProps = z.infer<typeof formSchema>;
@@ -25,23 +30,39 @@ type FormProps = z.infer<typeof formSchema>;
 export const CheckboxExample1 = () => {
   const form = useZodForm(formSchema);
 
-  const onSubmit = (values: z.infer<typeof formSchema>) => {
+  const handleSubmit = (values: FormProps) => {
     toast(JSON.stringify(values));
   };
 
   return (
-    <Form className='space-y-8' form={form} onSubmit={onSubmit}>
-      <FormFieldControl<FormProps> name='username'>
-        <FormItem>
-          <FormLabel>Username</FormLabel>
-          <div className='flex items-center gap-x-2'>
+    <Form className='space-y-8' form={form} onSubmit={handleSubmit}>
+      <FormFieldItem<FormProps> name='sidebar'>
+        <div className='mb-4'>
+          <FormLabel>Sidebar</FormLabel>
+          <FormDescription>
+            Select the items you want to display in the sidebar.
+          </FormDescription>
+        </div>
+        <FormFieldControl<FormProps> name='sidebar.applications'>
+          <FormItem className='flex items-center gap-x-2'>
+            <FormCheckbox id='recents' defaultChecked={true} />
+            <Label htmlFor='recents'>Recents</Label>
+          </FormItem>
+        </FormFieldControl>
+        <FormFieldControl<FormProps> name='sidebar.applications'>
+          <FormItem className='flex items-center gap-x-2'>
+            <FormCheckbox id='home' />
+            <Label htmlFor='home'>Home</Label>
+          </FormItem>
+        </FormFieldControl>
+        <FormFieldControl<FormProps> name='sidebar.applications'>
+          <FormItem className='flex items-center gap-x-2'>
             <FormCheckbox id='agree' />
-            <Label htmlFor='agree'>Agree</Label>
-          </div>
-          <FormDescription>This is your public display name.</FormDescription>
-          <FormMessage />
-        </FormItem>
-      </FormFieldControl>
+            <Label htmlFor='agree'>Applications</Label>
+          </FormItem>
+        </FormFieldControl>
+        <FormMessage />
+      </FormFieldItem>
       <Button type='submit'>Submit</Button>
     </Form>
   );

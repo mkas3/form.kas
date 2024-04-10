@@ -6,7 +6,10 @@ import { FormControl, useFormField } from '@/components/ui/form';
 import {
   Select,
   SelectContent,
+  SelectGroup,
   SelectItem,
+  SelectLabel,
+  SelectSeparator,
   SelectTrigger,
   SelectValue,
 } from '@/components/ui/select';
@@ -49,10 +52,19 @@ const FormSelectContent = SelectContent;
 
 const FormSelectItem = SelectItem;
 
+const FormSelectGroup = SelectGroup;
+
+const FormSelectLabel = SelectLabel;
+
+const FormSelectSeparator = SelectSeparator;
+
 export {
   FormSelect,
   FormSelectTrigger,
   FormSelectValue,
   FormSelectContent,
   FormSelectItem,
+  FormSelectGroup,
+  FormSelectLabel,
+  FormSelectSeparator,
 };

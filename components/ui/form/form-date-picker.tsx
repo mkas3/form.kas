@@ -32,7 +32,7 @@ const FormDatePickerTrigger = ({
   variant,
   className,
   children,
-  defaultValue = 'Select date',
+  defaultValue = 'Select Date',
   ...props
 }: FormDatePickerTriggerProps) => {
   const { name } = useFormField();
