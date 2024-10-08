@@ -22,7 +22,7 @@ export const SidebarContent = ({ className, forSheet, ...props }: SidebarContent
           <Link href='/'>Introduction</Link>
         </LinkWrapper>
         <LinkWrapper {...(forSheet ? { asChild: true } : undefined)}>
-          <Link href='/components'>Components</Link>
+          <Link href='/components' maxActiveDepth={1}>Components</Link>
         </LinkWrapper>
         <span className='mb-1 mt-4 font-semibold text-foreground'>Components</span>
         {HREFS_COMPONENTS_TITLES.map((item) => (

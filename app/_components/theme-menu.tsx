@@ -26,9 +26,9 @@ export const ThemeMenu = ({ ...props }: ThemeMenuProps) => {
         </Button>
       </DropdownMenuTrigger>
       <DropdownMenuContent align='end'>
-        <DropdownMenuItem onClick={() => setTheme('light')}>Светлая</DropdownMenuItem>
-        <DropdownMenuItem onClick={() => setTheme('dark')}>Темная</DropdownMenuItem>
-        <DropdownMenuItem onClick={() => setTheme('system')}>Системная</DropdownMenuItem>
+        <DropdownMenuItem onClick={() => setTheme('light')}>Light</DropdownMenuItem>
+        <DropdownMenuItem onClick={() => setTheme('dark')}>Dark</DropdownMenuItem>
+        <DropdownMenuItem onClick={() => setTheme('system')}>System</DropdownMenuItem>
       </DropdownMenuContent>
     </DropdownMenu>
   );

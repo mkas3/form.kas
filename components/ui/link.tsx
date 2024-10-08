@@ -12,16 +12,19 @@ const Link = forwardRef<
   Omit<React.ComponentPropsWithoutRef<typeof LinkPrimitive>, 'href'> & {
     href: string;
     underline?: boolean;
+    maxActiveDepth?: number;
   }
->(({ underline, className, href, ...props }, ref) => {
+>(({ underline, className, maxActiveDepth = Infinity, href, ...props }, ref) => {
   const pathname = usePathname();
 
   const isActive = useMemo(
     () =>
-      pathname === '/' || pathname === ''
+      pathname && href === '/'
         ? pathname === href
-        : pathname.split('/').every((pathnamePart) => href.split('/').includes(pathnamePart)),
-    [href, pathname]
+        : pathname.split('/').length - 1 <= maxActiveDepth
+          ? pathname.startsWith(href as string)
+          : false,
+    [pathname, href, maxActiveDepth]
   );
 
   return (
