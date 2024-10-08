@@ -21,7 +21,7 @@
   "scripts": {
     "dev": "next dev",
     "prebuild": "pnpm lint && pnpm typecheck",
-    "build": "next build",
+    "build": "next build && shx cp -rf ./public ./.next/standalone/public && shx cp -rf ./.next/static ./.next/standalone/.next/static",
     "start": "node ./.next/standalone/server.js",
     "lint": "eslint . --flag unstable_ts_config",
     "typecheck": "tsc --noEmit"
@@ -75,6 +75,7 @@
     "@types/react-text-mask": "^5.4.14",
     "autoprefixer": "^10.4.20",
     "postcss": "^8.4.47",
+    "shx": "^0.3.4",
     "tailwindcss": "^3.4.13",
     "typescript": "^5.6.2"
   }
