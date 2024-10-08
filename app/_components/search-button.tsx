@@ -1,11 +1,9 @@
 'use client';
 
-import { useState } from 'react';
+import React, { useState } from 'react';
 import { useRouter } from 'next/navigation';
-import { HREFS_COMPONENTS_TITLES } from '@/data/href.constants';
 import { MagnifyingGlassIcon } from '@radix-ui/react-icons';
 
-import { cn } from '@/lib/utils';
 import { Button } from '@/components/ui/button';
 import {
   CommandDialog,
@@ -13,9 +11,11 @@ import {
   CommandGroup,
   CommandInput,
   CommandItem,
-  CommandList,
+  CommandList
 } from '@/components/ui/command';
 import { Link } from '@/components/ui/link';
+import { HREFS_COMPONENTS_TITLES } from '@/data/href.constants';
+import { cn } from '@/lib/utils';
 
 type SearchButtonProps = React.ComponentPropsWithoutRef<typeof Button>;
 
@@ -39,11 +39,10 @@ export const SearchButton = ({ className, ...props }: SearchButtonProps) => {
         onClick={() => setOpen(true)}
         {...props}
       >
-        <span className='hidden px-4 text-muted-foreground sm:inline'>
-          Search...
-        </span>
+        <span className='hidden px-4 text-muted-foreground sm:inline'>Search...</span>
         <span className='flex aspect-square h-full scale-125 items-center justify-center text-accent-foreground sm:scale-100 sm:bg-accent'>
           <MagnifyingGlassIcon />
+          <span className='sr-only'>Search</span>
         </span>
       </Button>
       <CommandDialog open={open} onOpenChange={setOpen}>
@@ -51,24 +50,20 @@ export const SearchButton = ({ className, ...props }: SearchButtonProps) => {
         <CommandList className='[&_a]:hover:no-underline'>
           <CommandEmpty>No results found.</CommandEmpty>
           <CommandGroup heading='Start Work'>
-            <CommandItem onSelect={() => redirect('/')} asChild>
+            <CommandItem asChild onSelect={() => redirect('/')}>
               <Link href='/' onClick={() => setOpen(false)}>
                 Introduction
               </Link>
             </CommandItem>
-            <CommandItem onSelect={() => redirect('/components')} asChild>
+            <CommandItem asChild onSelect={() => redirect('/components')}>
               <Link href='/components' onClick={() => setOpen(false)}>
                 Components
               </Link>
             </CommandItem>
           </CommandGroup>
           <CommandGroup heading='Components'>
-            {HREFS_COMPONENTS_TITLES.map((item, index) => (
-              <CommandItem
-                key={index}
-                onSelect={() => redirect(item.href)}
-                asChild
-              >
+            {HREFS_COMPONENTS_TITLES.map((item) => (
+              <CommandItem key={item.href} asChild onSelect={() => redirect(item.href)}>
                 <Link href={item.href} onClick={() => setOpen(false)}>
                   {item.heading}
                 </Link>

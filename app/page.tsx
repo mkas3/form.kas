@@ -1,19 +1,19 @@
-import { siteConfig } from '@/config/site';
 import { Bold } from '@/components/ui/bold';
 import {
   Breadcrumb,
   BreadcrumbItem,
   BreadcrumbList,
   BreadcrumbPage,
-  BreadcrumbSeparator,
+  BreadcrumbSeparator
 } from '@/components/ui/breadcrumb';
 import { Description } from '@/components/ui/description';
 import { Heading } from '@/components/ui/heading';
 import { Italic } from '@/components/ui/italic';
 import { Link } from '@/components/ui/link';
 import { Paragraph } from '@/components/ui/paragraph';
+import { siteConfig } from '@/config/site';
 
-export default function IntroductionPage() {
+const IntroductionPage = () => {
   const jsonLd = {
     '@context': 'https://schema.org',
     '@type': 'WebSite',
@@ -21,15 +21,16 @@ export default function IntroductionPage() {
     mainEntityOfPage: {
       '@type': 'CollectionPage',
       name: 'Components',
-      url: `${siteConfig.url}/components`,
-    },
+      url: `${siteConfig.url}/components`
+    }
   };
 
   return (
     <>
       <script
-        type='application/ld+json'
+        /* eslint-disable-next-line react/no-danger */
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        type='application/ld+json'
       />
       <Breadcrumb className='mb-4'>
         <BreadcrumbList>
@@ -39,7 +40,7 @@ export default function IntroductionPage() {
           </BreadcrumbItem>
         </BreadcrumbList>
       </Breadcrumb>
-      <Heading className='mb-2' variant='h1'>
+      <Heading as='h1' className='mb-2'>
         Introduction
       </Heading>
       <Description className='mb-4'>
@@ -58,19 +59,18 @@ export default function IntroductionPage() {
         approach of shadcn.
       </Description>
       <Paragraph>
-        My components are <Bold>not installed as a separate dependency</Bold>{' '}
-        and <Bold>do not have a corresponding npm package</Bold>. You can take
-        these components for personal use and modification by simply copying
-        them <Bold>for free</Bold>.
+        My components are <Bold>not installed as a separate dependency</Bold> and{' '}
+        <Bold>do not have a corresponding npm package</Bold>. You can take these components for
+        personal use and modification by simply copying them <Bold>for free</Bold>.
       </Paragraph>
       <Paragraph>
-        Most of the components are built as client-side components because they
-        use hooks to access the form, which allows you to write them in a more
-        React friendly way without using your own hooks.
+        Most of the components are built as client-side components because they use hooks to access
+        the form, which allows you to write them in a more React friendly way without using your own
+        hooks.
       </Paragraph>
       <Paragraph>
-        I don&apos;t claim my components are correct, so if anyone wants to make
-        comments, I&apos;m always happy to hear them on{' '}
+        I don&apos;t claim my components are correct, so if anyone wants to make comments, I&apos;m
+        always happy to hear them on{' '}
         <Link href={siteConfig.links.githubProject} underline>
           Github
         </Link>
@@ -78,8 +78,7 @@ export default function IntroductionPage() {
       </Paragraph>
       <Paragraph>
         <Italic>
-          If you have any other questions, shadcn has probably already answered
-          them on his{' '}
+          If you have any other questions, shadcn has probably already answered them on his{' '}
           <Link href='https://ui.shadcn.com/docs' underline>
             site
           </Link>
@@ -88,4 +87,6 @@ export default function IntroductionPage() {
       </Paragraph>
     </>
   );
-}
+};
+
+export default IntroductionPage;

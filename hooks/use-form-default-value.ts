@@ -6,7 +6,6 @@ export const useFormDefaultValue = <T>(
   onChange: (...event: any[]) => void
 ) => {
   useEffect(() => {
-    if (value === undefined && defaultValue !== undefined)
-      onChange(defaultValue);
+    if (value === undefined && defaultValue !== undefined) onChange(defaultValue);
   }, [defaultValue, value, onChange]);
 };

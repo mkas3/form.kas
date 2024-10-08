@@ -15,21 +15,15 @@ export const usePackageManagerStore = create<PackageManagerStore>((set) => ({
   currentPackageManager: 'npm',
   setCurrentPackageManager: (value) => {
     const packageManager = packageManagerSchema.safeParse(value);
-    const newPackageManager = packageManager.success
-      ? packageManager.data
-      : 'npm';
+    const newPackageManager = packageManager.success ? packageManager.data : 'npm';
 
     localStorage.setItem('package-manager', newPackageManager);
     set({ currentPackageManager: newPackageManager });
   },
   initializePackageManager: () => {
-    const packageManager = packageManagerSchema.safeParse(
-      localStorage.getItem('package-manager')
-    );
-    const newPackageManager = packageManager.success
-      ? packageManager.data
-      : 'npm';
+    const packageManager = packageManagerSchema.safeParse(localStorage.getItem('package-manager'));
+    const newPackageManager = packageManager.success ? packageManager.data : 'npm';
 
     set({ currentPackageManager: newPackageManager });
-  },
+  }
 }));

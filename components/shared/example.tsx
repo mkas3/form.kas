@@ -1,16 +1,14 @@
+import React from 'react';
+
+import type { FileCodeProps } from '@/components/shared/file-code';
+import { FileCode } from '@/components/shared/file-code';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
-import { FileCode, FileCodeProps } from '@/components/shared/file-code';
 
 type ExampleProps = Omit<FileCodeProps, 'children'> & {
   children?: React.ReactNode;
 };
 
-export const Example = ({
-  children,
-  folderNames,
-  fileName,
-  ...props
-}: ExampleProps) => {
+export const Example = ({ children, folderNames, fileName, ...props }: ExampleProps) => {
   return (
     <Tabs defaultValue='preview'>
       <TabsList>
@@ -25,8 +23,8 @@ export const Example = ({
       <TabsContent value='code'>
         <FileCode
           className='max-h-[50vh] overflow-y-auto'
-          folderNames={folderNames}
           fileName={fileName}
+          folderNames={folderNames}
           {...props}
         />
       </TabsContent>

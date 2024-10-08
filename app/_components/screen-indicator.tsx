@@ -1,4 +1,4 @@
-export function ScreenIndicator() {
+export const ScreenIndicator = () => {
   if (process.env.NODE_ENV === 'production') return null;
 
   return (
@@ -11,4 +11,4 @@ export function ScreenIndicator() {
       <div className='hidden 2xl:block'>2xl</div>
     </div>
   );
-}
+};

@@ -1,44 +1,43 @@
-import { Metadata } from 'next';
+import type { Metadata } from 'next';
 
+import { Component } from '@/app/components/_components/component';
+import { ComponentInstallation } from '@/app/components/_components/component-installation';
+import { ComponentProps } from '@/app/components/_components/component-props';
+import { InputExampleSearch } from '@/app/components/_components/examples/input/input-example-search';
 import { Code } from '@/components/shared/code';
 import { Example } from '@/components/shared/example';
 import { Section } from '@/components/shared/section';
 import { Subsection } from '@/components/shared/subsection';
 import { SubsectionDescription } from '@/components/shared/subsection-description';
-import { Component } from '@/app/components/_components/component';
-import { ComponentInstallation } from '@/app/components/_components/component-installation';
-import { ComponentProps } from '@/app/components/_components/component-props';
-import { InputExampleSearch } from '@/app/components/_components/examples/input/input-example-search';
 
 export const metadata: Metadata = {
   title: 'Input',
-  description:
-    'Displays a form input field or a component that looks like an input field.',
+  description: 'Displays a form input field or a component that looks like an input field.'
 };
 
 export default function InputPage() {
   return (
     <Component
-      shortHeading='input'
-      heading='Input'
-      description='Displays a form input field or a component that looks like an input field.'
       links={[
         {
           heading: 'Base Component',
-          href: 'https://ui.shadcn.com/docs/components/input',
-        },
+          href: 'https://ui.shadcn.com/docs/components/input'
+        }
       ]}
+      description='Displays a form input field or a component that looks like an input field.'
+      heading='Input'
+      shortHeading='input'
     >
       <Example
-        folderNames={['app', 'components', '_components', 'examples', 'input']}
         fileName='input-example-search.tsx'
+        folderNames={['app', 'components', '_components', 'examples', 'input']}
       >
         <InputExampleSearch />
       </Example>
       <Section heading='Installation'>
         <ComponentInstallation
-          shadcnDependencies={['form', 'input']}
           componentFileName='form-input.tsx'
+          shadcnDependencies={['form', 'input']}
           hasDefaultValueHook
         />
       </Section>
@@ -54,21 +53,19 @@ export default function InputPage() {
       </Section>
       <Section heading='API Reference'>
         <Subsection heading='Input'>
-          <SubsectionDescription>
-            A wrapper over the shadcn/ui Input.
-          </SubsectionDescription>
+          <SubsectionDescription>A wrapper over the shadcn/ui Input.</SubsectionDescription>
           <ComponentProps
             componentProps={[
               {
                 prop: 'value',
                 type: 'string',
-                default: 'defaultValue',
+                default: 'defaultValue'
               },
               {
                 prop: 'defaultValue',
                 type: 'string',
-                default: "''",
-              },
+                default: "''"
+              }
             ]}
           />
         </Subsection>
@@ -76,14 +73,8 @@ export default function InputPage() {
       <Section heading='Examples'>
         <Subsection heading='Search'>
           <Example
-            folderNames={[
-              'app',
-              'components',
-              '_components',
-              'examples',
-              'input',
-            ]}
             fileName='input-example-search.tsx'
+            folderNames={['app', 'components', '_components', 'examples', 'input']}
           >
             <InputExampleSearch />
           </Example>

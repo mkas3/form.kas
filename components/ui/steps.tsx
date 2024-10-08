@@ -1,16 +1,14 @@
-import { forwardRef } from 'react';
+import React, { forwardRef } from 'react';
 
+import { Heading } from '@/components/ui/heading';
 import { cn } from '@/lib/utils';
 
-const Steps = forwardRef<HTMLDivElement, React.HTMLAttributes<HTMLDivElement>>(
+const Steps = forwardRef<HTMLDivElement, React.ComponentPropsWithoutRef<'div'>>(
   ({ className, ...props }, ref) => {
     return (
       <div
         ref={ref}
-        className={cn(
-          'ml-4 flex flex-col gap-y-8 border-l pl-8 [counter-reset:step]',
-          className
-        )}
+        className={cn('ml-4 flex flex-col gap-y-8 border-l pl-8 [counter-reset:step]', className)}
         {...props}
       />
     );
@@ -18,7 +16,7 @@ const Steps = forwardRef<HTMLDivElement, React.HTMLAttributes<HTMLDivElement>>(
 );
 Steps.displayName = 'Steps';
 
-const Step = forwardRef<HTMLDivElement, React.HTMLAttributes<HTMLDivElement>>(
+const Step = forwardRef<HTMLDivElement, React.ComponentPropsWithoutRef<'div'>>(
   ({ className, ...props }, ref) => {
     return (
       <div
@@ -34,18 +32,14 @@ const Step = forwardRef<HTMLDivElement, React.HTMLAttributes<HTMLDivElement>>(
 );
 Step.displayName = 'Step';
 
-const StepTitle = forwardRef<
-  HTMLHeadingElement,
-  React.HTMLAttributes<HTMLHeadingElement>
->(({ className, ...props }, ref) => {
-  return (
-    <h3
-      ref={ref}
-      className={cn('mb-4 text-xl font-semibold tracking-tight', className)}
-      {...props}
-    />
-  );
-});
+const StepTitle = forwardRef<HTMLHeadingElement, React.ComponentPropsWithoutRef<typeof Heading>>(
+  ({ className, ...props }, ref) => {
+    return (
+      // eslint-disable-next-line jsx-a11y/heading-has-content
+      <Heading ref={ref} as='h3' className={cn('mb-4', className)} {...props} />
+    );
+  }
+);
 StepTitle.displayName = 'StepTitle';
 
-export { Steps, Step, StepTitle };
+export { Step, Steps, StepTitle };

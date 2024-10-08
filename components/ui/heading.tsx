@@ -1,24 +1,30 @@
-import { cva, VariantProps } from 'class-variance-authority';
+import React, { forwardRef } from 'react';
+import type { VariantProps } from 'class-variance-authority';
+import { cva } from 'class-variance-authority';
 
 import { cn } from '@/lib/utils';
 
-type HeadingProps = React.HTMLAttributes<HTMLHeadingElement> &
-  VariantProps<typeof headingVariants>;
-
-const headingVariants = cva('', {
+const headingVariants = cva('tracking-tight', {
   variants: {
-    variant: {
-      h1: 'text-4xl font-bold tracking-tight',
-      h2: 'text-2xl font-semibold tracking-tight',
-      h3: 'text-xl font-semibold tracking-tight',
-    },
+    as: {
+      h1: 'text-4xl font-bold',
+      h2: 'text-2xl font-semibold',
+      h3: 'text-xl font-semibold'
+    }
   },
+  defaultVariants: {
+    as: 'h1'
+  }
 });
 
-export const Heading = ({ variant, className, ...props }: HeadingProps) => {
-  const Comp = variant ?? 'h1';
+const Heading = forwardRef<
+  HTMLHeadingElement,
+  React.ComponentPropsWithoutRef<'h1'> & VariantProps<typeof headingVariants>
+>(({ as, className, ...props }) => {
+  const Comp = as ?? 'h1';
 
-  return (
-    <Comp className={cn(headingVariants({ variant, className }))} {...props} />
-  );
-};
+  return <Comp className={cn(headingVariants({ as, className }))} {...props} />;
+});
+Heading.displayName = 'Heading';
+
+export { Heading };

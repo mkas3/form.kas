@@ -1,4 +1,6 @@
-type MarkProps = React.HTMLAttributes<HTMLElement>;
+import React from 'react';
+
+type MarkProps = React.ComponentPropsWithoutRef<'mark'>;
 
 export const Mark = ({ ...props }: MarkProps) => {
   return (

@@ -1,19 +1,16 @@
-import { cn } from '@/lib/utils';
-import { Heading } from '@/components/ui/heading';
+import React from 'react';
 
-type SubsectionProps = React.HTMLAttributes<HTMLDivElement> & {
+import { Heading } from '@/components/ui/heading';
+import { cn } from '@/lib/utils';
+
+type SubsectionProps = React.ComponentPropsWithoutRef<'div'> & {
   heading: string;
 };
 
-export const Subsection = ({
-  heading,
-  className,
-  children,
-  ...props
-}: SubsectionProps) => {
+export const Subsection = ({ heading, className, children, ...props }: SubsectionProps) => {
   return (
     <div className={cn('flex flex-col gap-y-6', className)} {...props}>
-      <Heading variant='h3'>{heading}</Heading>
+      <Heading as='h3'>{heading}</Heading>
       {children}
     </div>
   );

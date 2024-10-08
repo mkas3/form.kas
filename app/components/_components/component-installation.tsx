@@ -1,12 +1,11 @@
-import { Step, Steps, StepTitle } from '@/components/ui/steps';
-import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
+import { ComponentInstallationTabs } from '@/app/components/_components/component-installation-tabs';
 import { Code } from '@/components/shared/code';
 import { FileCode } from '@/components/shared/file-code';
-import { ComponentInstallationTabs } from '@/app/components/_components/component-installation-tabs';
+import { Step, Steps, StepTitle } from '@/components/ui/steps';
+import type { Tabs } from '@/components/ui/tabs';
+import { TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 
-type ComponentInstallationProps = React.ComponentPropsWithoutRef<
-  typeof Tabs
-> & {
+type ComponentInstallationProps = React.ComponentPropsWithoutRef<typeof Tabs> & {
   shadcnDependencies: string[];
   componentFileName: string;
   innerDependencies?: string[];
@@ -38,108 +37,79 @@ export const ComponentInstallation = ({
             <TabsTrigger value='bun'>bun</TabsTrigger>
           </TabsList>
           <TabsContent value='npm'>
-            <Code lang='console'>
-              npx shadcn-ui@latest add {shadcnDependencies.join(' ')}
-            </Code>
-            {dependencies && (
-              <Code lang='console'>npm install {dependencies.join(' ')}</Code>
-            )}
-            {devDependencies && (
-              <Code lang='console'>
-                npm install {devDependencies.join(' ')} --save-dev
-              </Code>
-            )}
+            <Code lang='console'>npx shadcn-ui@latest add {shadcnDependencies.join(' ')}</Code>
+            {dependencies ? <Code lang='console'>npm install {dependencies.join(' ')}</Code> : null}
+            {devDependencies ? (
+              <Code lang='console'>npm install {devDependencies.join(' ')} --save-dev</Code>
+            ) : null}
           </TabsContent>
           <TabsContent value='yarn'>
-            <Code lang='console'>
-              npx shadcn-ui@latest add {shadcnDependencies.join(' ')}
-            </Code>
-            {dependencies && (
-              <Code lang='console'>yarn add {dependencies.join(' ')}</Code>
-            )}
-            {devDependencies && (
-              <Code lang='console'>
-                yarn add -D {devDependencies.join(' ')}
-              </Code>
-            )}
+            <Code lang='console'>npx shadcn-ui@latest add {shadcnDependencies.join(' ')}</Code>
+            {dependencies ? <Code lang='console'>yarn add {dependencies.join(' ')}</Code> : null}
+            {devDependencies ? (
+              <Code lang='console'>yarn add -D {devDependencies.join(' ')}</Code>
+            ) : null}
           </TabsContent>
           <TabsContent value='pnpm'>
-            <Code lang='console'>
-              pnpm dlx shadcn-ui@latest add {shadcnDependencies.join(' ')}
-            </Code>
-            {dependencies && (
-              <Code lang='console'>pnpm add {dependencies.join(' ')}</Code>
-            )}
-            {devDependencies && (
-              <Code lang='console'>
-                pnpm add -D {devDependencies.join(' ')}
-              </Code>
-            )}
+            <Code lang='console'>pnpm dlx shadcn-ui@latest add {shadcnDependencies.join(' ')}</Code>
+            {dependencies ? <Code lang='console'>pnpm add {dependencies.join(' ')}</Code> : null}
+            {devDependencies ? (
+              <Code lang='console'>pnpm add -D {devDependencies.join(' ')}</Code>
+            ) : null}
           </TabsContent>
           <TabsContent value='bun'>
             <Code lang='console'>
               bunx --bun shadcn-ui@latest add {shadcnDependencies.join(' ')}
             </Code>
-            {dependencies && (
-              <Code lang='console'>bun add {dependencies.join(' ')}</Code>
-            )}
-            {devDependencies && (
+            {dependencies ? <Code lang='console'>bun add {dependencies.join(' ')}</Code> : null}
+            {devDependencies ? (
               <Code lang='console'>bun add -D {devDependencies.join(' ')}</Code>
-            )}
+            ) : null}
           </TabsContent>
         </ComponentInstallationTabs>
       </Step>
-      {hasDefaultValueHook && (
+      {hasDefaultValueHook ? (
         <Step>
-          <StepTitle>
-            Copy and paste the following hook code into your project.
-          </StepTitle>
+          <StepTitle>Copy and paste the following hook code into your project.</StepTitle>
           <FileCode
             className='max-h-[50vh] overflow-y-auto'
-            folderNames={['hooks']}
             fileName='use-form-default-value.ts'
+            folderNames={['hooks']}
           />
         </Step>
-      )}
-      {hasZodFormHook && (
+      ) : null}
+      {hasZodFormHook ? (
         <Step>
-          <StepTitle>
-            Copy and paste the following hook code into your project.
-          </StepTitle>
+          <StepTitle>Copy and paste the following hook code into your project.</StepTitle>
           <FileCode
             className='max-h-[50vh] overflow-y-auto'
-            folderNames={['hooks']}
             fileName='use-zod-form.ts'
+            folderNames={['hooks']}
           />
         </Step>
-      )}
+      ) : null}
       <Step>
-        <StepTitle>
-          Copy and paste the following component code into your project.
-        </StepTitle>
+        <StepTitle>Copy and paste the following component code into your project.</StepTitle>
         <FileCode
           className='max-h-[50vh] overflow-y-auto'
-          folderNames={['components', 'ui', 'form']}
           fileName={componentFileName}
+          folderNames={['components', 'shared', 'form']}
         />
       </Step>
-      {innerDependencies &&
-        innerDependencies.map((item, index) => (
-          <Step key={index}>
-            <StepTitle>
-              Copy and paste the following component code into your project.
-            </StepTitle>
-            <FileCode
-              className='max-h-[50vh] overflow-y-auto'
-              folderNames={['components', 'ui', 'form']}
-              fileName={item}
-            />
-          </Step>
-        ))}
+      {innerDependencies
+        ? innerDependencies.map((item, index) => (
+            <Step key={index}>
+              <StepTitle>Copy and paste the following component code into your project.</StepTitle>
+              <FileCode
+                className='max-h-[50vh] overflow-y-auto'
+                fileName={item}
+                folderNames={['components', 'shared', 'form']}
+              />
+            </Step>
+          ))
+        : null}
       <Step>
-        <StepTitle>
-          Update the import paths to match your project setup.
-        </StepTitle>
+        <StepTitle>Update the import paths to match your project setup.</StepTitle>
       </Step>
     </Steps>
   );

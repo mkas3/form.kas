@@ -1,17 +1,11 @@
 import React from 'react';
 import { Menu } from 'lucide-react';
 
-import { siteConfig } from '@/config/site';
+import { SidebarContent } from '@/app/_components/sidebar-content';
 import { Button } from '@/components/ui/button';
 import { Logo } from '@/components/ui/logo';
-import {
-  Sheet,
-  SheetContent,
-  SheetHeader,
-  SheetTitle,
-  SheetTrigger,
-} from '@/components/ui/sheet';
-import { SidebarContent } from '@/app/_components/sidebar-content';
+import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger } from '@/components/ui/sheet';
+import { siteConfig } from '@/config/site';
 
 type BurgerMenuProps = React.ComponentPropsWithoutRef<typeof Sheet>;
 
@@ -19,11 +13,9 @@ export const BurgerMenu = ({ ...props }: BurgerMenuProps) => {
   return (
     <Sheet {...props}>
       <SheetTrigger asChild>
-        <Button
-          className='flex aspect-square w-auto p-0 sm:hidden'
-          variant='ghost'
-        >
+        <Button className='flex aspect-square w-auto p-0 sm:hidden' variant='ghost'>
           <Menu />
+          <span className='sr-only'>Navigation menu</span>
         </Button>
       </SheetTrigger>
       <SheetContent className='flex flex-col items-start justify-center text-sm text-muted-foreground'>

@@ -1,14 +1,13 @@
-import type { UrlObject } from 'url';
-
 import Link from 'next/link';
 import { ExternalLink } from 'lucide-react';
+import type { UrlObject } from 'url';
 
-import { siteConfig } from '@/config/site';
+import { ComponentButtons } from '@/app/components/_components/component-buttons';
 import { badgeVariants } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { Description } from '@/components/ui/description';
 import { Heading } from '@/components/ui/heading';
-import { ComponentButtons } from '@/app/components/_components/component-buttons';
+import { siteConfig } from '@/config/site';
 
 import { ComponentBreadcrumb } from './component-breadcrumb';
 
@@ -25,7 +24,7 @@ export const Component = ({
   heading,
   description,
   links,
-  children,
+  children
 }: ComponentProps) => {
   const jsonLd = {
     '@context': 'https://schema.org/',
@@ -35,25 +34,25 @@ export const Component = ({
         '@type': 'ListItem',
         position: 1,
         name: 'Components',
-        item: `${siteConfig.url}/components`,
+        item: `${siteConfig.url}/components`
       },
       {
         '@type': 'ListItem',
         position: 2,
         name: heading,
-        item: `${siteConfig.url}/components/${shortHeading}`,
-      },
-    ],
+        item: `${siteConfig.url}/components/${shortHeading}`
+      }
+    ]
   };
 
   return (
     <>
       <script
-        type='application/ld+json'
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        type='application/ld+json'
       />
       <ComponentBreadcrumb className='mb-4' heading={heading} />
-      <Heading className='mb-2' variant='h1'>
+      <Heading as='h1' className='mb-2'>
         {heading}
       </Heading>
       <Description className='mb-4'>{description}</Description>
@@ -63,11 +62,11 @@ export const Component = ({
             key={index}
             className={badgeVariants({
               variant: 'secondary',
-              className: 'gap-x-1',
+              className: 'gap-x-1'
             })}
             href={item.href}
-            target='_blank'
             rel='noreferrer'
+            target='_blank'
           >
             {item.heading}
             <ExternalLink className='size-3' />

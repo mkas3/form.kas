@@ -1,30 +1,30 @@
 import React from 'react';
-import { Metadata } from 'next';
+import type { Metadata } from 'next';
 
+import { Code } from '@/components/shared/code';
+import { FileCode } from '@/components/shared/file-code';
+import { Mark } from '@/components/shared/mark';
+import { Section } from '@/components/shared/section';
 import { Bold } from '@/components/ui/bold';
 import {
   Breadcrumb,
   BreadcrumbItem,
   BreadcrumbList,
   BreadcrumbPage,
-  BreadcrumbSeparator,
+  BreadcrumbSeparator
 } from '@/components/ui/breadcrumb';
 import { Description } from '@/components/ui/description';
 import { Heading } from '@/components/ui/heading';
 import { Link } from '@/components/ui/link';
 import { Paragraph } from '@/components/ui/paragraph';
-import { Code } from '@/components/shared/code';
-import { FileCode } from '@/components/shared/file-code';
-import { Mark } from '@/components/shared/mark';
-import { Section } from '@/components/shared/section';
 
 export const metadata: Metadata = {
   title: 'Components',
   description:
-    'Form components based on shadcn/ui components using the zod and react-hook-form approach of shadcn.',
+    'Form components based on shadcn/ui components using the zod and react-hook-form approach of shadcn.'
 };
 
-export default function ComponentsPage() {
+const ComponentsPage = () => {
   return (
     <>
       <Breadcrumb className='mb-4'>
@@ -35,17 +35,16 @@ export default function ComponentsPage() {
           </BreadcrumbItem>
         </BreadcrumbList>
       </Breadcrumb>
-      <Heading className='mb-2' variant='h1'>
+      <Heading as='h1' className='mb-2'>
         Components
       </Heading>
       <Description className='mb-4'>
         General description of how the components are organized
       </Description>
       <Paragraph>
-        All the code I wrote exists to simplify my life, so I hope these
-        components will help you <Bold>make forms easier</Bold>. Below are some
-        of the concepts I used to build the components, so I suggest you read
-        some of the chapters.
+        All the code I wrote exists to simplify my life, so I hope these components will help you{' '}
+        <Bold>make forms easier</Bold>. Below are some of the concepts I used to build the
+        components, so I suggest you read some of the chapters.
       </Paragraph>
       <Section heading='Packages'>
         <Paragraph>
@@ -61,51 +60,39 @@ export default function ComponentsPage() {
           <Link href='https://react-hook-form.com' underline>
             react-hook-form
           </Link>{' '}
-          . For this reason, my components are aimed at simplifying interaction
-          with these libraries.
+          . For this reason, my components are aimed at simplifying interaction with these
+          libraries.
         </Paragraph>
         <Paragraph>
-          To simplify the use of zod in forms, I created the{' '}
-          <Mark>useZodForm</Mark> hook that accepts the schema as a parameter.
-          This hook wraps <Mark>useForm</Mark> from{' '}
+          To simplify the use of zod in forms, I created the <Mark>useZodForm</Mark> hook that
+          accepts the schema as a parameter. This hook wraps <Mark>useForm</Mark> from{' '}
           <Link href='https://react-hook-form.com' underline>
             react-hook-form
           </Link>{' '}
           to create forms in a more understandable way.
         </Paragraph>
-        <FileCode
-          className='mt-4'
-          folderNames={['hooks']}
-          fileName='use-zod-form.ts'
-        />
+        <FileCode className='mt-4' fileName='use-zod-form.ts' folderNames={['hooks']} />
       </Section>
       <Section heading='Default Value'>
         <Paragraph>
-          Components are built to always have a logical and defined{' '}
-          <Mark>value</Mark> prop so that components are{' '}
-          <Bold>controllable when mounted</Bold>, so almost every component
-          takes as <Mark>defaultValue</Mark> what the resulting value will be.
+          Components are built to always have a logical and defined <Mark>value</Mark> prop so that
+          components are <Bold>controllable when mounted</Bold>, so almost every component takes as{' '}
+          <Mark>defaultValue</Mark> what the resulting value will be.
         </Paragraph>
         <Paragraph>
           This is achieved through the <Mark>useFormDefaultValue</Mark> hook.
         </Paragraph>
-        <FileCode
-          className='mt-4'
-          folderNames={['hooks']}
-          fileName='use-form-default-value.ts'
-        />
+        <FileCode className='mt-4' fileName='use-form-default-value.ts' folderNames={['hooks']} />
         <Paragraph>
-          The default value of a component can be found in the{' '}
-          <Bold>API Reference</Bold> section of each individual component&apos;s
-          page.
+          The default value of a component can be found in the <Bold>API Reference</Bold> section of
+          each individual component&apos;s page.
         </Paragraph>
       </Section>
       <Section heading='Server-Side Rendering'>
         <Paragraph>
           In order to provide forms rendering on the server, I created the{' '}
-          <Mark>FormFieldControl</Mark> and <Mark>FormFieldItem</Mark>{' '}
-          components as generics. Therefore, forms can easily be created on the
-          server by simply wrapping the parent{' '}
+          <Mark>FormFieldControl</Mark> and <Mark>FormFieldItem</Mark> components as generics.
+          Therefore, forms can easily be created on the server by simply wrapping the parent{' '}
           <Bold>Form component in a client component</Bold>.
         </Paragraph>
         <Code className='mt-4'>
@@ -161,4 +148,6 @@ export default function ComponentsPage() {
       </Section>
     </>
   );
-}
+};
+
+export default ComponentsPage;

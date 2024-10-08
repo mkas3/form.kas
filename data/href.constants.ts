@@ -1,82 +1,82 @@
 export const HREFS_COMPONENTS_TITLES: { heading: string; href: string }[] = [
   {
     heading: 'Checkbox',
-    href: '/components/checkbox',
+    href: '/components/checkbox'
   },
   {
     heading: 'Combobox',
-    href: '/components/combobox',
+    href: '/components/combobox'
   },
   {
     heading: 'Date Picker',
-    href: '/components/date-picker',
+    href: '/components/date-picker'
   },
   {
     heading: 'Form',
-    href: '/components/form',
+    href: '/components/form'
   },
   {
     heading: 'Form Field',
-    href: '/components/field',
+    href: '/components/field'
   },
   {
     heading: 'Form Field Control',
-    href: '/components/field-control',
+    href: '/components/field-control'
   },
   {
     heading: 'Form Field Item',
-    href: '/components/field-item',
+    href: '/components/field-item'
   },
   {
     heading: 'Input',
-    href: '/components/input',
+    href: '/components/input'
   },
   {
     heading: 'Input OTP',
-    href: '/components/input-otp',
+    href: '/components/input-otp'
   },
   {
     heading: 'Masked Input',
-    href: '/components/masked-input',
+    href: '/components/masked-input'
   },
   {
     heading: 'Number Input',
-    href: '/components/number-input',
+    href: '/components/number-input'
   },
   {
     heading: 'Password Input',
-    href: '/components/password-input',
+    href: '/components/password-input'
   },
   {
     heading: 'Phone Number Input',
-    href: '/components/phone-number-input',
+    href: '/components/phone-number-input'
   },
   {
     heading: 'Radio Group',
-    href: '/components/radio-group',
+    href: '/components/radio-group'
   },
   {
     heading: 'Select',
-    href: '/components/select',
+    href: '/components/select'
   },
   {
     heading: 'Slider',
-    href: '/components/slider',
+    href: '/components/slider'
   },
   {
     heading: 'Switch',
-    href: '/components/switch',
+    href: '/components/switch'
   },
   {
     heading: 'Textarea',
-    href: '/components/textarea',
+    href: '/components/textarea'
   },
   {
     heading: 'Toggle',
-    href: '/components/toggle',
+    href: '/components/toggle'
   },
   {
     heading: 'Toggle Group',
-    href: '/components/toggle-group',
-  },
+    href: '/components/toggle-group'
+  }
 ];

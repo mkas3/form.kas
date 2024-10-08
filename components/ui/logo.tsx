@@ -1,13 +1,15 @@
+import React from 'react';
+
 import { cn } from '@/lib/utils';
 
-type LogoProps = React.SVGAttributes<SVGElement>;
+type LogoProps = React.ComponentPropsWithoutRef<'svg'>;
 
 export const Logo = ({ className, ...props }: LogoProps) => {
   return (
     <svg
       className={cn('aspect-square size-8', className)}
-      viewBox='0 0 150 150'
       fill='none'
+      viewBox='0 0 150 150'
       xmlns='http://www.w3.org/2000/svg'
       {...props}
     >

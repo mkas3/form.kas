@@ -4,22 +4,20 @@ import React from 'react';
 import { toast } from 'sonner';
 import { z } from 'zod';
 
-import { useZodForm } from '@/hooks/use-zod-form';
+import { Form } from '@/components/shared/form/form';
+import { FormFieldItem } from '@/components/shared/form/form-field-item';
+import { FormPhoneNumberInput } from '@/components/shared/form/form-phone-number-input';
 import { Button } from '@/components/ui/button';
 import { FormMessage } from '@/components/ui/form';
-import { Form } from '@/components/ui/form/form';
-import { FormFieldItem } from '@/components/ui/form/form-field-item';
-import { FormPhoneNumberInput } from '@/components/ui/form/form-phone-number-input';
+import { useZodForm } from '@/hooks/use-zod-form';
 
 const formSchema = z.object({
   phone: z.object({
-    phoneNumber: z
-      .string({ errorMap: () => ({ message: 'Please enter phone number' }) })
-      .min(1),
+    phoneNumber: z.string({ errorMap: () => ({ message: 'Please enter phone number' }) }).min(1),
     country: z.string().refine((value) => value !== 'ZZ', {
-      message: 'Select valid country',
-    }),
-  }),
+      message: 'Select valid country'
+    })
+  })
 });
 
 type FormProps = z.infer<typeof formSchema>;

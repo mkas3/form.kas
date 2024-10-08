@@ -1,6 +1,8 @@
+import React from 'react';
+
 import { SidebarContent } from '@/app/_components/sidebar-content';
 
-type SidebarProps = React.HTMLAttributes<HTMLDivElement>;
+type SidebarProps = React.ComponentPropsWithoutRef<'aside'>;
 
 export const Sidebar = ({ ...props }: SidebarProps) => {
   return (

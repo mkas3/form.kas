@@ -1,16 +1,17 @@
+import React from 'react';
 import { GitHubLogoIcon } from '@radix-ui/react-icons';
 
-import { siteConfig } from '@/config/site';
-import { cn } from '@/lib/utils';
+import { BurgerMenu } from '@/app/_components/burger-menu';
+import { SearchButton } from '@/app/_components/search-button';
 import { buttonVariants } from '@/components/ui/button';
 import { Link } from '@/components/ui/link';
 import { Logo } from '@/components/ui/logo';
-import { BurgerMenu } from '@/app/_components/burger-menu';
-import { SearchButton } from '@/app/_components/search-button';
+import { siteConfig } from '@/config/site';
+import { cn } from '@/lib/utils';
 
 import { ThemeMenu } from './theme-menu';
 
-type HeaderProps = React.HTMLAttributes<HTMLDivElement>;
+type HeaderProps = React.ComponentPropsWithoutRef<'header'>;
 
 export const Header = ({ className, ...props }: HeaderProps) => {
   return (
@@ -32,13 +33,11 @@ export const Header = ({ className, ...props }: HeaderProps) => {
         <div className='flex gap-x-2'>
           <SearchButton />
           <Link
-            className={cn(
-              buttonVariants({ variant: 'ghost' }),
-              'aspect-square w-auto p-0'
-            )}
+            className={cn(buttonVariants({ variant: 'ghost' }), 'aspect-square w-auto p-0')}
             href={siteConfig.links.githubProject}
           >
             <GitHubLogoIcon />
+            <span className='sr-only'>form.xerase Github link</span>
           </Link>
           <ThemeMenu />
           <BurgerMenu />

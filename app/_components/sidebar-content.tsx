@@ -1,20 +1,16 @@
 import React, { Fragment } from 'react';
-import { HREFS_COMPONENTS_TITLES } from '@/data/href.constants';
 
-import { cn } from '@/lib/utils';
 import { Link } from '@/components/ui/link';
 import { ScrollArea } from '@/components/ui/scroll-area';
 import { SheetClose } from '@/components/ui/sheet';
+import { HREFS_COMPONENTS_TITLES } from '@/data/href.constants';
+import { cn } from '@/lib/utils';
 
 type SidebarContentProps = React.ComponentPropsWithoutRef<typeof ScrollArea> & {
   forSheet?: boolean;
 };
 
-export const SidebarContent = ({
-  className,
-  forSheet,
-  ...props
-}: SidebarContentProps) => {
+export const SidebarContent = ({ className, forSheet, ...props }: SidebarContentProps) => {
   const LinkWrapper = forSheet ? SheetClose : Fragment;
 
   return (
@@ -27,14 +23,9 @@ export const SidebarContent = ({
         <LinkWrapper {...(forSheet ? { asChild: true } : undefined)}>
           <Link href='/components'>Components</Link>
         </LinkWrapper>
-        <span className='mb-1 mt-4 font-semibold text-foreground'>
-          Components
-        </span>
-        {HREFS_COMPONENTS_TITLES.map((item, index) => (
-          <LinkWrapper
-            key={index}
-            {...(forSheet ? { asChild: true } : undefined)}
-          >
+        <span className='mb-1 mt-4 font-semibold text-foreground'>Components</span>
+        {HREFS_COMPONENTS_TITLES.map((item) => (
+          <LinkWrapper key={item.href} {...(forSheet ? { asChild: true } : undefined)}>
             <Link href={item.href}>{item.heading}</Link>
           </LinkWrapper>
         ))}

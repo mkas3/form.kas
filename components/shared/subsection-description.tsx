@@ -1,7 +1,7 @@
-type SubsectionDescriptionProps = React.HTMLAttributes<HTMLParagraphElement>;
+import React from 'react';
 
-export const SubsectionDescription = ({
-  ...props
-}: SubsectionDescriptionProps) => {
+type SubsectionDescriptionProps = React.ComponentPropsWithoutRef<'p'>;
+
+export const SubsectionDescription = ({ ...props }: SubsectionDescriptionProps) => {
   return <p className='leading-7' {...props} />;
 };
