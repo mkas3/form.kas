@@ -22,7 +22,7 @@
     "dev": "next dev",
     "prebuild": "pnpm lint && pnpm typecheck",
     "build": "next build",
-    "start": "node ./.next/dist/server.js",
+    "start": "node ./.next/standalone/server.js",
     "lint": "eslint . --flag unstable_ts_config",
     "typecheck": "tsc --noEmit"
   },
