@@ -1,6 +1,6 @@
 'use client';
 
-import React, { forwardRef, useMemo } from 'react';
+import { forwardRef, useMemo } from 'react';
 import { useController } from 'react-hook-form';
 
 import { FormControl, useFormField } from '@/components/ui/form';

@@ -1,5 +1,3 @@
-import React from 'react';
-
 import { SidebarContent } from '@/app/_components/sidebar-content';
 
 type SidebarProps = React.ComponentPropsWithoutRef<'aside'>;

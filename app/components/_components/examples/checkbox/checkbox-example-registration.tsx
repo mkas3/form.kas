@@ -1,24 +1,24 @@
 'use client';
 
-import { FieldErrors } from 'react-hook-form';
+import type { FieldErrors } from 'react-hook-form';
+
+import { Form } from '@/components/shared/form/form';
+import { FormCheckbox } from '@/components/shared/form/form-checkbox';
+import { FormFieldItem } from '@/components/shared/form/form-field-item';
+import { Button } from '@/components/ui/button';
+import { FormMessage } from '@/components/ui/form';
+import { Label } from '@/components/ui/label';
+import { useZodForm } from '@/hooks/use-zod-form';
 import { toast } from 'sonner';
 import { z } from 'zod';
 
-import { useZodForm } from '@/hooks/use-zod-form';
-import { Button } from '@/components/ui/button';
-import { FormItem, FormMessage } from '@/components/ui/form';
-import { Form } from '@/components/ui/form/form';
-import { FormCheckbox } from '@/components/ui/form/form-checkbox';
-import { FormFieldItem } from '@/components/ui/form/form-field-item';
-import { Label } from '@/components/ui/label';
-
 const formSchema = z.object({
   terms: z.boolean().refine((val) => val === true, {
-    message: 'You must agree to the terms of service.',
+    message: 'You must agree to the terms of service.'
   }),
   privacyPolicy: z.boolean().refine((val) => val === true, {
-    message: 'You must agree to the privacy policy.',
-  }),
+    message: 'You must agree to the privacy policy.'
+  })
 });
 
 type FormProps = z.infer<typeof formSchema>;
@@ -38,8 +38,8 @@ export const CheckboxExampleRegistration = () => {
     <Form
       className='flex flex-col gap-y-2'
       form={form}
-      onSubmit={handleSubmit}
       onInvalidSubmit={handleInvalidSubmit}
+      onSubmit={handleSubmit}
     >
       <FormFieldItem<FormProps> name='terms'>
         <div className='flex items-end gap-x-2'>

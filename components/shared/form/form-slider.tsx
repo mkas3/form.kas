@@ -1,16 +1,18 @@
 'use client';
 
-import React, { forwardRef } from 'react';
+import { forwardRef } from 'react';
 import { useController } from 'react-hook-form';
 
 import { useFormField } from '@/components/ui/form';
 import { Slider } from '@/components/ui/slider';
 import { useFormDefaultValue } from '@/hooks/use-form-default-value';
 
+const DEFAULT_VALUE = [50];
+
 const FormSlider = forwardRef<
   React.ElementRef<typeof Slider>,
   React.ComponentPropsWithoutRef<typeof Slider>
->(({ defaultValue = [50], ...props }, ref) => {
+>(({ defaultValue = DEFAULT_VALUE, ...props }, ref) => {
   const { name } = useFormField();
   const { field } = useController({
     name

@@ -1,13 +1,7 @@
 'use client';
 
-import { toast } from 'sonner';
-import { z } from 'zod';
-
-import { useZodForm } from '@/hooks/use-zod-form';
-import { Button } from '@/components/ui/button';
-import { FormMessage } from '@/components/ui/form';
-import { Form } from '@/components/ui/form/form';
-import { FormFieldItem } from '@/components/ui/form/form-field-item';
+import { Form } from '@/components/shared/form/form';
+import { FormFieldItem } from '@/components/shared/form/form-field-item';
 import {
   FormSelect,
   FormSelectContent,
@@ -15,13 +9,18 @@ import {
   FormSelectItem,
   FormSelectLabel,
   FormSelectTrigger,
-  FormSelectValue,
-} from '@/components/ui/form/form-select';
+  FormSelectValue
+} from '@/components/shared/form/form-select';
+import { Button } from '@/components/ui/button';
+import { FormMessage } from '@/components/ui/form';
+import { useZodForm } from '@/hooks/use-zod-form';
+import { toast } from 'sonner';
+import { z } from 'zod';
 
 const formSchema = z.object({
   visaType: z.enum(['tourist', 'business', 'student'], {
-    errorMap: () => ({ message: 'Please select type of Visa.' }),
-  }),
+    errorMap: () => ({ message: 'Please select type of Visa.' })
+  })
 });
 
 type FormProps = z.infer<typeof formSchema>;

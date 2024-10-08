@@ -1,6 +1,7 @@
-import { forwardRef } from 'react';
-import * as React from 'react';
 import type { VariantProps } from 'class-variance-authority';
+
+import { forwardRef } from 'react';
+
 import { cva } from 'class-variance-authority';
 
 import { cn } from '@/lib/utils';
@@ -30,5 +31,6 @@ const Badge = forwardRef<
 >(({ className, variant, ...props }, ref) => {
   return <div ref={ref} className={cn(badgeVariants({ variant }), className)} {...props} />;
 });
+Badge.displayName = 'Badge';
 
 export { Badge, badgeVariants };

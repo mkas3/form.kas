@@ -1,37 +1,33 @@
-import { Metadata } from 'next';
+import type { Metadata } from 'next';
 
-import { Section } from '@/components/shared/section';
 import { Component } from '@/app/components/_components/component';
 import { ComponentInstallation } from '@/app/components/_components/component-installation';
+import { Section } from '@/components/shared/section';
 
 export const metadata: Metadata = {
   title: 'Form Field',
-  description:
-    'Wrapper over the shadcn/ui FormField to simplify working with it.',
+  description: 'Wrapper over the shadcn/ui FormField to simplify working with it.'
 };
 
 export default function FieldPage() {
   return (
     <Component
-      shortHeading='field'
-      heading='Form Field'
       description='Wrapper over the shadcn/ui FormField to simplify working with it.'
+      heading='Form Field'
       links={[
         {
           heading: 'Base Component',
-          href: 'https://ui.shadcn.com/docs/components/form',
+          href: 'https://ui.shadcn.com/docs/components/form'
         },
         {
           heading: 'Docs',
-          href: 'https://react-hook-form.com/',
-        },
+          href: 'https://react-hook-form.com/'
+        }
       ]}
+      shortHeading='field'
     >
       <Section heading='Installation'>
-        <ComponentInstallation
-          shadcnDependencies={['form']}
-          componentFileName='form-field.tsx'
-        />
+        <ComponentInstallation componentFileName='form-field.tsx' shadcnDependencies={['form']} />
       </Section>
     </Component>
   );

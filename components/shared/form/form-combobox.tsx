@@ -1,11 +1,11 @@
 'use client';
 
-import React, { forwardRef } from 'react';
-import { useController } from 'react-hook-form';
-import { CaretSortIcon, CheckIcon } from '@radix-ui/react-icons';
+import type { buttonVariants } from '@/components/ui/button';
 import type { VariantProps } from 'class-variance-authority';
 
-import type { buttonVariants } from '@/components/ui/button';
+import { forwardRef } from 'react';
+import { useController } from 'react-hook-form';
+
 import { Button } from '@/components/ui/button';
 import {
   Command,
@@ -17,6 +17,8 @@ import {
 } from '@/components/ui/command';
 import { FormControl, useFormField } from '@/components/ui/form';
 import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover';
+import { CaretSortIcon, CheckIcon } from '@radix-ui/react-icons';
+
 import { cn } from '@/lib/utils';
 
 const FormCombobox = Popover;

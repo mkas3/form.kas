@@ -1,12 +1,11 @@
-import React from 'react';
-import { GitHubLogoIcon } from '@radix-ui/react-icons';
-
 import { BurgerMenu } from '@/app/_components/burger-menu';
 import { SearchButton } from '@/app/_components/search-button';
 import { buttonVariants } from '@/components/ui/button';
 import { Link } from '@/components/ui/link';
 import { Logo } from '@/components/ui/logo';
 import { siteConfig } from '@/config/site';
+import { GitHubLogoIcon } from '@radix-ui/react-icons';
+
 import { cn } from '@/lib/utils';
 
 import { ThemeMenu } from './theme-menu';

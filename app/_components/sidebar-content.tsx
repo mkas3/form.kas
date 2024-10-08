@@ -1,9 +1,10 @@
-import React, { Fragment } from 'react';
+import { Fragment } from 'react';
 
 import { Link } from '@/components/ui/link';
 import { ScrollArea } from '@/components/ui/scroll-area';
 import { SheetClose } from '@/components/ui/sheet';
 import { HREFS_COMPONENTS_TITLES } from '@/data/href.constants';
+
 import { cn } from '@/lib/utils';
 
 type SidebarContentProps = React.ComponentPropsWithoutRef<typeof ScrollArea> & {

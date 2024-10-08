@@ -1,9 +1,15 @@
-import React from 'react';
+import { forwardRef } from 'react';
 
 import { cn } from '@/lib/utils';
 
 type BoldProps = React.ComponentPropsWithoutRef<'strong'>;
 
-export const Bold = ({ className, ...props }: BoldProps) => {
-  return <strong className={cn('font-bold', className)} {...props} />;
-};
+const Bold = forwardRef<
+  React.ElementRef<'strong'>,
+  BoldProps
+>(({ className, ...props }, ref) => {
+  return <strong ref={ref} className={cn('font-bold', className)} {...props} />;
+});
+Bold.displayName = 'Bold';
+
+export { Bold };

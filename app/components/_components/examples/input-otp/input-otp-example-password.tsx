@@ -1,23 +1,21 @@
 'use client';
 
-import React from 'react';
-import { toast } from 'sonner';
-import { z } from 'zod';
-
-import { useZodForm } from '@/hooks/use-zod-form';
-import { Button } from '@/components/ui/button';
-import { FormMessage } from '@/components/ui/form';
-import { Form } from '@/components/ui/form/form';
-import { FormFieldItem } from '@/components/ui/form/form-field-item';
+import { Form } from '@/components/shared/form/form';
+import { FormFieldItem } from '@/components/shared/form/form-field-item';
 import {
   FormInputOTP,
   FormInputOTPGroup,
   FormInputOTPSeparator,
-  FormInputOTPSlot,
-} from '@/components/ui/form/form-input-otp';
+  FormInputOTPSlot
+} from '@/components/shared/form/form-input-otp';
+import { Button } from '@/components/ui/button';
+import { FormMessage } from '@/components/ui/form';
+import { useZodForm } from '@/hooks/use-zod-form';
+import { toast } from 'sonner';
+import { z } from 'zod';
 
 const formSchema = z.object({
-  otp: z.string().length(6, 'OTP must be exactly 6 digits long.'),
+  otp: z.string().length(6, 'OTP must be exactly 6 digits long.')
 });
 
 type FormProps = z.infer<typeof formSchema>;

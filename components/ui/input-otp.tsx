@@ -1,7 +1,7 @@
 'use client';
 
-import { forwardRef } from 'react';
-import * as React from 'react';
+import { forwardRef, useContext } from 'react';
+
 import { OTPInput, OTPInputContext } from 'input-otp';
 import { Dot } from 'lucide-react';
 
@@ -13,11 +13,11 @@ const InputOTP = forwardRef<
 >(({ className, containerClassName, ...props }, ref) => (
   <OTPInput
     ref={ref}
+    className={cn('disabled:cursor-not-allowed', className)}
     containerClassName={cn(
       'flex items-center gap-2 has-[:disabled]:opacity-50',
       containerClassName
     )}
-    className={cn('disabled:cursor-not-allowed', className)}
     {...props}
   />
 ));
@@ -34,7 +34,7 @@ const InputOTPSlot = forwardRef<
   React.ElementRef<'div'>,
   React.ComponentPropsWithoutRef<'div'> & { index: number }
 >(({ index, className, ...props }, ref) => {
-  const inputOTPContext = React.useContext(OTPInputContext);
+  const inputOTPContext = useContext(OTPInputContext);
   const { char, hasFakeCaret, isActive } = inputOTPContext.slots[index];
 
   return (
@@ -48,11 +48,13 @@ const InputOTPSlot = forwardRef<
       {...props}
     >
       {char}
-      {hasFakeCaret ? (
-        <div className='pointer-events-none absolute inset-0 flex items-center justify-center'>
-          <div className='h-4 w-px animate-caret-blink bg-foreground duration-1000' />
-        </div>
-      ) : null}
+      {hasFakeCaret
+        ? (
+            <div className='pointer-events-none absolute inset-0 flex items-center justify-center'>
+              <div className='h-4 w-px animate-caret-blink bg-foreground duration-1000' />
+            </div>
+          )
+        : null}
     </div>
   );
 });

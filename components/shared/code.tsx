@@ -1,12 +1,11 @@
-import React from 'react';
-
 import type { GetCodeOptions } from '@/lib/utils';
+
 import { cn, getCode } from '@/lib/utils';
 
 import { CodeCopyButton } from './code-copy-button';
 
-type CodeProps = Omit<React.ComponentPropsWithoutRef<'div'>, 'children'> &
-  GetCodeOptions & {
+type CodeProps = GetCodeOptions &
+  Omit<React.ComponentPropsWithoutRef<'div'>, 'children'> & {
     children?: string | string[];
     disableCopy?: boolean;
   };
@@ -25,7 +24,6 @@ export const Code = async ({
     <div className={cn('relative', className)}>
       <div
         className='overflow-auto rounded-xl border bg-code p-4 font-mono text-sm *:!bg-transparent'
-        /* eslint-disable-next-line react/no-danger */
         dangerouslySetInnerHTML={{ __html: code }}
         {...props}
       />

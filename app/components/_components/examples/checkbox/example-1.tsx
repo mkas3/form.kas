@@ -1,28 +1,22 @@
 'use client';
 
+import { Form } from '@/components/shared/form/form';
+import { FormCheckbox } from '@/components/shared/form/form-checkbox';
+import { FormFieldControl } from '@/components/shared/form/form-field-control';
+import { FormFieldItem } from '@/components/shared/form/form-field-item';
+import { Button } from '@/components/ui/button';
+import { FormDescription, FormItem, FormLabel, FormMessage } from '@/components/ui/form';
+import { Label } from '@/components/ui/label';
+import { useZodForm } from '@/hooks/use-zod-form';
 import { toast } from 'sonner';
 import { z } from 'zod';
-
-import { useZodForm } from '@/hooks/use-zod-form';
-import { Button } from '@/components/ui/button';
-import {
-  FormDescription,
-  FormItem,
-  FormLabel,
-  FormMessage,
-} from '@/components/ui/form';
-import { Form } from '@/components/ui/form/form';
-import { FormCheckbox } from '@/components/ui/form/form-checkbox';
-import { FormFieldControl } from '@/components/ui/form/form-field-control';
-import { FormFieldItem } from '@/components/ui/form/form-field-item';
-import { Label } from '@/components/ui/label';
 
 const formSchema = z.object({
   sidebar: z.object({
     recents: z.boolean(),
     home: z.boolean(),
-    applications: z.boolean(),
-  }),
+    applications: z.boolean()
+  })
 });
 
 type FormProps = z.infer<typeof formSchema>;
@@ -39,13 +33,11 @@ export const CheckboxExample1 = () => {
       <FormFieldItem<FormProps> name='sidebar'>
         <div className='mb-4'>
           <FormLabel>Sidebar</FormLabel>
-          <FormDescription>
-            Select the items you want to display in the sidebar.
-          </FormDescription>
+          <FormDescription>Select the items you want to display in the sidebar.</FormDescription>
         </div>
         <FormFieldControl<FormProps> name='sidebar.applications'>
           <FormItem className='flex items-center gap-x-2'>
-            <FormCheckbox id='recents' defaultChecked={true} />
+            <FormCheckbox id='recents' defaultChecked />
             <Label htmlFor='recents'>Recents</Label>
           </FormItem>
         </FormFieldControl>

@@ -1,13 +1,13 @@
+import type { UrlObject } from 'node:url';
+
 import Link from 'next/link';
-import { ExternalLink } from 'lucide-react';
-import type { UrlObject } from 'url';
 
 import { ComponentButtons } from '@/app/components/_components/component-buttons';
 import { badgeVariants } from '@/components/ui/badge';
-import { Button } from '@/components/ui/button';
 import { Description } from '@/components/ui/description';
 import { Heading } from '@/components/ui/heading';
 import { siteConfig } from '@/config/site';
+import { ExternalLink } from 'lucide-react';
 
 import { ComponentBreadcrumb } from './component-breadcrumb';
 
@@ -29,18 +29,18 @@ export const Component = ({
   const jsonLd = {
     '@context': 'https://schema.org/',
     '@type': 'BreadcrumbList',
-    itemListElement: [
+    'itemListElement': [
       {
         '@type': 'ListItem',
-        position: 1,
-        name: 'Components',
-        item: `${siteConfig.url}/components`
+        'position': 1,
+        'name': 'Components',
+        'item': `${siteConfig.url}/components`
       },
       {
         '@type': 'ListItem',
-        position: 2,
-        name: heading,
-        item: `${siteConfig.url}/components/${shortHeading}`
+        'position': 2,
+        'name': heading,
+        'item': `${siteConfig.url}/components/${shortHeading}`
       }
     ]
   };
@@ -52,7 +52,7 @@ export const Component = ({
         type='application/ld+json'
       />
       <ComponentBreadcrumb className='mb-4' heading={heading} />
-      <Heading as='h1' className='mb-2'>
+      <Heading className='mb-2' as='h1'>
         {heading}
       </Heading>
       <Description className='mb-4'>{description}</Description>

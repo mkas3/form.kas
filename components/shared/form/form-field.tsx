@@ -1,4 +1,3 @@
-import React from 'react';
 import type { ControllerProps, FieldPath, FieldValues } from 'react-hook-form';
 
 import { FormField as FormFieldPrimitive } from '@/components/ui/form';

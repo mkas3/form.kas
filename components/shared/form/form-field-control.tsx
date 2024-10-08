@@ -1,7 +1,7 @@
 'use client';
 
-import React from 'react';
 import type { Control, ControllerProps, FieldPath, FieldValues } from 'react-hook-form';
+
 import { useFormContext } from 'react-hook-form';
 
 import { FormField } from './form-field';

@@ -1,17 +1,16 @@
 'use client';
 
+import { Form } from '@/components/shared/form/form';
+import { FormFieldItem } from '@/components/shared/form/form-field-item';
+import { FormSwitch } from '@/components/shared/form/form-switch';
+import { Button } from '@/components/ui/button';
+import { Label } from '@/components/ui/label';
+import { useZodForm } from '@/hooks/use-zod-form';
 import { toast } from 'sonner';
 import { z } from 'zod';
 
-import { useZodForm } from '@/hooks/use-zod-form';
-import { Button } from '@/components/ui/button';
-import { Form } from '@/components/ui/form/form';
-import { FormFieldItem } from '@/components/ui/form/form-field-item';
-import { FormSwitch } from '@/components/ui/form/form-switch';
-import { Label } from '@/components/ui/label';
-
 const formSchema = z.object({
-  darkTheme: z.boolean(),
+  darkTheme: z.boolean()
 });
 
 type FormProps = z.infer<typeof formSchema>;

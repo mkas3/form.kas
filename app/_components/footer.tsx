@@ -1,5 +1,3 @@
-import React from 'react';
-
 type FooterProps = React.ComponentPropsWithoutRef<'footer'>;
 
 export const Footer = ({ ...props }: FooterProps) => {

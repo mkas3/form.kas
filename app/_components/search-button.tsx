@@ -1,8 +1,8 @@
 'use client';
 
-import React, { useState } from 'react';
+import { useState } from 'react';
+
 import { useRouter } from 'next/navigation';
-import { MagnifyingGlassIcon } from '@radix-ui/react-icons';
 
 import { Button } from '@/components/ui/button';
 import {
@@ -15,6 +15,8 @@ import {
 } from '@/components/ui/command';
 import { Link } from '@/components/ui/link';
 import { HREFS_COMPONENTS_TITLES } from '@/data/href.constants';
+import { MagnifyingGlassIcon } from '@radix-ui/react-icons';
+
 import { cn } from '@/lib/utils';
 
 type SearchButtonProps = React.ComponentPropsWithoutRef<typeof Button>;

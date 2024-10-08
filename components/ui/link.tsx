@@ -1,6 +1,7 @@
 'use client';
 
-import React, { forwardRef, useMemo } from 'react';
+import { forwardRef, useMemo } from 'react';
+
 import LinkPrimitive from 'next/link';
 import { usePathname } from 'next/navigation';
 

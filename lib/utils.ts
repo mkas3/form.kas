@@ -1,6 +1,7 @@
 import type { ClassValue } from 'clsx';
-import { clsx } from 'clsx';
 import type { CodeToHastOptions } from 'shiki';
+
+import { clsx } from 'clsx';
 import { codeToHtml } from 'shiki';
 import { twMerge } from 'tailwind-merge';
 

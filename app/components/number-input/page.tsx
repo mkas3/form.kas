@@ -1,62 +1,55 @@
-import { Metadata } from 'next';
+import type { Metadata } from 'next';
 
+import { Component } from '@/app/components/_components/component';
+import { ComponentInstallation } from '@/app/components/_components/component-installation';
+import { ComponentProps } from '@/app/components/_components/component-props';
+import { NumberInputExampleProduct } from '@/app/components/_components/examples/number-input/number-input-example-product';
 import { Code } from '@/components/shared/code';
 import { Example } from '@/components/shared/example';
 import { Section } from '@/components/shared/section';
 import { Subsection } from '@/components/shared/subsection';
 import { SubsectionDescription } from '@/components/shared/subsection-description';
-import { Component } from '@/app/components/_components/component';
-import { ComponentInstallation } from '@/app/components/_components/component-installation';
-import { ComponentProps } from '@/app/components/_components/component-props';
-import { NumberInputExampleProduct } from '@/app/components/_components/examples/number-input/number-input-example-product';
 
 export const metadata: Metadata = {
   title: 'Number Input',
-  description:
-    'An input where the user can enter only a numeric value may have a mask.',
+  description: 'An input where the user can enter only a numeric value may have a mask.'
 };
 
 export default function NumberInputPage() {
   return (
     <Component
-      shortHeading='number-input'
-      heading='Number Input'
       description='An input where the user can enter only a numeric value may have a mask.'
+      heading='Number Input'
       links={[
         {
           heading: 'Base Component',
-          href: 'https://s-yadav.github.io/react-number-format/docs/intro/',
-        },
+          href: 'https://s-yadav.github.io/react-number-format/docs/intro/'
+        }
       ]}
+      shortHeading='number-input'
     >
       <Example
-        folderNames={[
-          'app',
-          'components',
-          '_components',
-          'examples',
-          'number-input',
-        ]}
         fileName='number-input-example-product.tsx'
+        folderNames={['app', 'components', '_components', 'examples', 'number-input']}
       >
         <NumberInputExampleProduct />
       </Example>
       <Section heading='Installation'>
         <ComponentInstallation
-          shadcnDependencies={['form', 'input']}
           componentFileName='form-combobox.tsx'
           dependencies={['react-number-format']}
+          shadcnDependencies={['form', 'input']}
           hasDefaultValueHook
         />
       </Section>
       <Section heading='Usage'>
         <Code>
-          {'<Form form={form} onSubmit={handleSubmit}>\n' +
-            '\t<FormFieldItem<FormProps> name="number-input">\n' +
-            '\t\t<FormNumberInput />\n' +
-            '\t</FormFieldItem>\n' +
-            '\t<Button type="submit" />\n' +
-            '</Form>'}
+          {'<Form form={form} onSubmit={handleSubmit}>\n'
+          + '\t<FormFieldItem<FormProps> name="number-input">\n'
+          + '\t\t<FormNumberInput />\n'
+          + '\t</FormFieldItem>\n'
+          + '\t<Button type="submit" />\n'
+          + '</Form>'}
         </Code>
       </Section>
       <Section heading='API Reference'>
@@ -69,23 +62,23 @@ export default function NumberInputPage() {
               {
                 prop: 'isNumericValue',
                 type: 'boolean',
-                default: 'false',
+                default: 'false'
               },
               {
                 prop: 'value',
                 type: 'string | (number | undefined)',
-                default: 'defaultValue | defaultNumericValue',
+                default: 'defaultValue | defaultNumericValue'
               },
               {
                 prop: 'defaultValue',
                 type: 'string',
-                default: "''",
+                default: '\'\''
               },
               {
                 prop: 'defaultNumericValue',
                 type: 'number | undefined',
-                default: 'undefined',
-              },
+                default: 'undefined'
+              }
             ]}
           />
         </Subsection>
@@ -98,23 +91,23 @@ export default function NumberInputPage() {
               {
                 prop: 'isNumericValue',
                 type: 'boolean',
-                default: 'false',
+                default: 'false'
               },
               {
                 prop: 'value',
                 type: 'string | number?',
-                default: 'defaultValue | defaultNumericValue',
+                default: 'defaultValue | defaultNumericValue'
               },
               {
                 prop: 'defaultValue',
                 type: 'string?',
-                default: "''",
+                default: '\'\''
               },
               {
                 prop: 'defaultNumericValue',
                 type: 'number?',
-                default: 'undefined',
-              },
+                default: 'undefined'
+              }
             ]}
           />
         </Subsection>
@@ -122,14 +115,8 @@ export default function NumberInputPage() {
       <Section heading='Examples'>
         <Subsection heading='Products'>
           <Example
-            folderNames={[
-              'app',
-              'components',
-              '_components',
-              'examples',
-              'number-input',
-            ]}
             fileName='number-input-example-product.tsx'
+            folderNames={['app', 'components', '_components', 'examples', 'number-input']}
           >
             <NumberInputExampleProduct />
           </Example>

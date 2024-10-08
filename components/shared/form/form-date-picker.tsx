@@ -1,15 +1,15 @@
 'use client';
 
-import React from 'react';
 import { useController } from 'react-hook-form';
-import { format } from 'date-fns';
-import { ru } from 'date-fns/locale/ru';
-import { CalendarIcon } from 'lucide-react';
 
 import { Button } from '@/components/ui/button';
 import { Calendar } from '@/components/ui/calendar';
 import { FormControl, useFormField } from '@/components/ui/form';
 import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover';
+import { format } from 'date-fns';
+import { ru } from 'date-fns/locale/ru';
+import { CalendarIcon } from 'lucide-react';
+
 import { cn } from '@/lib/utils';
 
 export type FormDatePickerTriggerProps = React.ComponentPropsWithoutRef<typeof Button>;
@@ -47,11 +47,13 @@ const FormDatePickerTrigger = ({
           {children}
           {!children && (
             <>
-              {field.value ? (
-                format(field.value, 'PPP', { locale: ru })
-              ) : (
-                <span>{defaultValue}</span>
-              )}
+              {field.value
+                ? (
+                    format(field.value, 'PPP', { locale: ru })
+                  )
+                : (
+                    <span>{defaultValue}</span>
+                  )}
               <CalendarIcon className='ml-4 size-4 opacity-50' />
             </>
           )}
@@ -62,7 +64,7 @@ const FormDatePickerTrigger = ({
 };
 
 const FormDatePickerContent = ({ className, ...props }: FormDatePickerContentProps) => {
-  return <PopoverContent align='start' className={cn('w-auto p-0')} {...props} />;
+  return <PopoverContent className={cn('w-auto p-0')} align='start' {...props} />;
 };
 
 const FormDatePickerCalendar = ({ ...props }: FormDatePickerCalendarProps) => {

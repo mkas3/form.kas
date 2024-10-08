@@ -1,18 +1,17 @@
 'use client';
 
+import { Form } from '@/components/shared/form/form';
+import { FormFieldItem } from '@/components/shared/form/form-field-item';
+import { FormToggle } from '@/components/shared/form/form-toggle';
+import { Button } from '@/components/ui/button';
+import { Label } from '@/components/ui/label';
+import { useZodForm } from '@/hooks/use-zod-form';
 import { Bell } from 'lucide-react';
 import { toast } from 'sonner';
 import { z } from 'zod';
 
-import { useZodForm } from '@/hooks/use-zod-form';
-import { Button } from '@/components/ui/button';
-import { Form } from '@/components/ui/form/form';
-import { FormFieldItem } from '@/components/ui/form/form-field-item';
-import { FormToggle } from '@/components/ui/form/form-toggle';
-import { Label } from '@/components/ui/label';
-
 const formSchema = z.object({
-  hasNotifications: z.boolean(),
+  hasNotifications: z.boolean()
 });
 
 type FormProps = z.infer<typeof formSchema>;

@@ -18,14 +18,14 @@ export const metadata: Metadata = {
 export default function InputPage() {
   return (
     <Component
+      description='Displays a form input field or a component that looks like an input field.'
+      heading='Input'
       links={[
         {
           heading: 'Base Component',
           href: 'https://ui.shadcn.com/docs/components/input'
         }
       ]}
-      description='Displays a form input field or a component that looks like an input field.'
-      heading='Input'
       shortHeading='input'
     >
       <Example
@@ -43,12 +43,12 @@ export default function InputPage() {
       </Section>
       <Section heading='Usage'>
         <Code>
-          {'<Form form={form} onSubmit={handleSubmit}>\n' +
-            '\t<FormFieldItem<FormProps> name="input">\n' +
-            '\t\t<FormInput />\n' +
-            '\t</FormFieldItem>\n' +
-            '\t<Button type="submit" />\n' +
-            '</Form>'}
+          {'<Form form={form} onSubmit={handleSubmit}>\n'
+          + '\t<FormFieldItem<FormProps> name="input">\n'
+          + '\t\t<FormInput />\n'
+          + '\t</FormFieldItem>\n'
+          + '\t<Button type="submit" />\n'
+          + '</Form>'}
         </Code>
       </Section>
       <Section heading='API Reference'>
@@ -64,7 +64,7 @@ export default function InputPage() {
               {
                 prop: 'defaultValue',
                 type: 'string',
-                default: "''"
+                default: '\'\''
               }
             ]}
           />

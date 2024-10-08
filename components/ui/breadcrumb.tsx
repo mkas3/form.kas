@@ -1,5 +1,5 @@
 import { forwardRef } from 'react';
-import * as React from 'react';
+
 import { Slot } from '@radix-ui/react-slot';
 import { ChevronRight, MoreHorizontal } from 'lucide-react';
 
@@ -56,9 +56,9 @@ const BreadcrumbPage = forwardRef<HTMLSpanElement, React.ComponentPropsWithoutRe
   ({ className, ...props }, ref) => (
     <span
       ref={ref}
+      className={cn('font-normal text-foreground', className)}
       aria-current='page'
       aria-disabled='true'
-      className={cn('font-normal text-foreground', className)}
       role='link'
       {...props}
     />
@@ -68,8 +68,8 @@ BreadcrumbPage.displayName = 'BreadcrumbPage';
 
 const BreadcrumbSeparator = ({ children, className, ...props }: React.ComponentProps<'li'>) => (
   <li
-    aria-hidden='true'
     className={cn('[&>svg]:size-3.5', className)}
+    aria-hidden='true'
     role='presentation'
     {...props}
   >
@@ -80,8 +80,8 @@ BreadcrumbSeparator.displayName = 'BreadcrumbSeparator';
 
 const BreadcrumbEllipsis = ({ className, ...props }: React.ComponentProps<'span'>) => (
   <span
-    aria-hidden='true'
     className={cn('flex size-9 items-center justify-center', className)}
+    aria-hidden='true'
     role='presentation'
     {...props}
   >

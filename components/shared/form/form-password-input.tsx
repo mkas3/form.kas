@@ -1,6 +1,6 @@
 'use client';
 
-import React, {
+import {
   createContext,
   forwardRef,
   useContext,
@@ -9,12 +9,13 @@ import React, {
   useState
 } from 'react';
 import { useController } from 'react-hook-form';
-import { Eye, EyeOff } from 'lucide-react';
 
 import { FormControl, useFormField } from '@/components/ui/form';
 import { Input } from '@/components/ui/input';
 import { Toggle } from '@/components/ui/toggle';
 import { useFormDefaultValue } from '@/hooks/use-form-default-value';
+import { Eye, EyeOff } from 'lucide-react';
+
 import { cn } from '@/lib/utils';
 
 type FormPasswordInputContext = {
@@ -70,8 +71,8 @@ const FormPasswordInputArea = forwardRef<
       <Input
         {...field}
         ref={ref}
-        autoComplete='off'
         className='pr-10'
+        autoComplete='off'
         type={pressed ? 'text' : 'password'}
         value={field.value ?? defaultValue}
         {...props}

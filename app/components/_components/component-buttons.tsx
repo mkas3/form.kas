@@ -1,9 +1,8 @@
-import React from 'react';
 import Link from 'next/link';
-import { ChevronLeft, ChevronRight } from 'lucide-react';
 
 import { buttonVariants } from '@/components/ui/button';
 import { HREFS_COMPONENTS_TITLES } from '@/data/href.constants';
+import { ChevronLeft, ChevronRight } from 'lucide-react';
 
 type ComponentButtonsProps = React.ComponentPropsWithoutRef<'div'> & {
   heading: string;

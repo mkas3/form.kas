@@ -1,9 +1,10 @@
 'use client';
 
 import type { ForwardedRef } from 'react';
-import React, { forwardRef, useImperativeHandle } from 'react';
-import { useController } from 'react-hook-form';
 import type { NumericFormatProps, PatternFormatProps } from 'react-number-format';
+
+import { forwardRef, useImperativeHandle } from 'react';
+import { useController } from 'react-hook-form';
 import { NumericFormat, PatternFormat } from 'react-number-format';
 
 import { FormControl, useFormField } from '@/components/ui/form';
@@ -12,7 +13,7 @@ import { useFormDefaultValue } from '@/hooks/use-form-default-value';
 
 const useFormNumberInput = (
   ref: ForwardedRef<HTMLInputElement>,
-  defaultValue: string | number | undefined
+  defaultValue: number | string | undefined
 ) => {
   const { name } = useFormField();
   const {

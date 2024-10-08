@@ -1,13 +1,15 @@
 'use client';
 
-import { createContext, forwardRef, useMemo } from 'react';
-import * as React from 'react';
 import type { ControllerProps, FieldPath, FieldValues } from 'react-hook-form';
-import { Controller, FormProvider, useFormContext } from 'react-hook-form';
+
 import type * as LabelPrimitive from '@radix-ui/react-label';
-import { Slot } from '@radix-ui/react-slot';
+
+import { createContext, forwardRef, useContext, useId, useMemo } from 'react';
+import { Controller, FormProvider, useFormContext } from 'react-hook-form';
 
 import { Label } from '@/components/ui/label';
+import { Slot } from '@radix-ui/react-slot';
+
 import { cn } from '@/lib/utils';
 
 const Form = FormProvider;
@@ -41,11 +43,11 @@ type FormItemContext = {
   id: string;
 };
 
-const formItemContext = React.createContext<FormItemContext>({} as FormItemContext);
+const formItemContext = createContext<FormItemContext>({} as FormItemContext);
 
 const FormItem = forwardRef<HTMLDivElement, React.ComponentPropsWithoutRef<'div'>>(
   ({ ...props }, ref) => {
-    const id = React.useId();
+    const id = useId();
 
     const contextValue = useMemo(() => ({ id }), [id]);
 
@@ -59,8 +61,8 @@ const FormItem = forwardRef<HTMLDivElement, React.ComponentPropsWithoutRef<'div'
 FormItem.displayName = 'FormItem';
 
 const useFormField = () => {
-  const fieldContext = React.useContext(formFieldContext);
-  const itemContext = React.useContext(formItemContext);
+  const fieldContext = useContext(formFieldContext);
+  const itemContext = useContext(formItemContext);
   const { getFieldState, formState } = useFormContext();
 
   const fieldState = getFieldState(fieldContext.name, formState);

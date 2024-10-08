@@ -1,24 +1,23 @@
 'use client';
 
-import { toast } from 'sonner';
-import { z } from 'zod';
-
-import { useZodForm } from '@/hooks/use-zod-form';
-import { Button } from '@/components/ui/button';
-import { FormMessage } from '@/components/ui/form';
-import { Form } from '@/components/ui/form/form';
+import { Form } from '@/components/shared/form/form';
 import {
   FormDatePicker,
   FormDatePickerCalendar,
   FormDatePickerContent,
-  FormDatePickerTrigger,
-} from '@/components/ui/form/form-date-picker';
-import { FormFieldItem } from '@/components/ui/form/form-field-item';
+  FormDatePickerTrigger
+} from '@/components/shared/form/form-date-picker';
+import { FormFieldItem } from '@/components/shared/form/form-field-item';
+import { Button } from '@/components/ui/button';
+import { FormMessage } from '@/components/ui/form';
+import { useZodForm } from '@/hooks/use-zod-form';
+import { toast } from 'sonner';
+import { z } from 'zod';
 
 const formSchema = z.object({
   datePicker: z.date({
-    errorMap: () => ({ message: 'Please select a date.' }),
-  }),
+    errorMap: () => ({ message: 'Please select a date.' })
+  })
 });
 
 type FormProps = z.infer<typeof formSchema>;

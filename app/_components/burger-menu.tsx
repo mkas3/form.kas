@@ -1,11 +1,9 @@
-import React from 'react';
-import { Menu } from 'lucide-react';
-
 import { SidebarContent } from '@/app/_components/sidebar-content';
 import { Button } from '@/components/ui/button';
 import { Logo } from '@/components/ui/logo';
 import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger } from '@/components/ui/sheet';
 import { siteConfig } from '@/config/site';
+import { Menu } from 'lucide-react';
 
 type BurgerMenuProps = React.ComponentPropsWithoutRef<typeof Sheet>;
 

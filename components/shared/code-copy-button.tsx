@@ -1,7 +1,9 @@
 'use client';
 
 import type React from 'react';
+
 import { useEffect, useState } from 'react';
+
 import { Check, Copy } from 'lucide-react';
 
 import { Button } from '../ui/button';

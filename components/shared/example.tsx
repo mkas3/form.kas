@@ -1,6 +1,5 @@
-import React from 'react';
-
 import type { FileCodeProps } from '@/components/shared/file-code';
+
 import { FileCode } from '@/components/shared/file-code';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 

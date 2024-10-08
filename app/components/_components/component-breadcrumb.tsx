@@ -1,5 +1,3 @@
-import type { UrlObject } from 'url';
-
 import Link from 'next/link';
 
 import {
@@ -8,19 +6,14 @@ import {
   BreadcrumbLink,
   BreadcrumbList,
   BreadcrumbPage,
-  BreadcrumbSeparator,
+  BreadcrumbSeparator
 } from '@/components/ui/breadcrumb';
 
-type ComponentBreadcrumbProps = React.ComponentPropsWithoutRef<
-  typeof Breadcrumb
-> & {
+type ComponentBreadcrumbProps = React.ComponentPropsWithoutRef<typeof Breadcrumb> & {
   heading: string;
 };
 
-export const ComponentBreadcrumb = ({
-  heading,
-  ...props
-}: ComponentBreadcrumbProps) => {
+export const ComponentBreadcrumb = ({ heading, ...props }: ComponentBreadcrumbProps) => {
   return (
     <Breadcrumb {...props}>
       <BreadcrumbList>

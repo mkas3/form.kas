@@ -1,17 +1,16 @@
 'use client';
 
+import { Form } from '@/components/shared/form/form';
+import { FormFieldItem } from '@/components/shared/form/form-field-item';
+import { FormSlider } from '@/components/shared/form/form-slider';
+import { Button } from '@/components/ui/button';
+import { FormMessage } from '@/components/ui/form';
+import { useZodForm } from '@/hooks/use-zod-form';
 import { toast } from 'sonner';
 import { z } from 'zod';
 
-import { useZodForm } from '@/hooks/use-zod-form';
-import { Button } from '@/components/ui/button';
-import { FormMessage } from '@/components/ui/form';
-import { Form } from '@/components/ui/form/form';
-import { FormFieldItem } from '@/components/ui/form/form-field-item';
-import { FormSlider } from '@/components/ui/form/form-slider';
-
 const formSchema = z.object({
-  priceRange: z.tuple([z.number(), z.number()]),
+  priceRange: z.tuple([z.number(), z.number()])
 });
 
 type FormProps = z.infer<typeof formSchema>;
@@ -26,7 +25,7 @@ export const SliderExamplePrice = () => {
   return (
     <Form className='flex flex-col gap-y-4' form={form} onSubmit={handleSubmit}>
       <FormFieldItem<FormProps> name='priceRange'>
-        <FormSlider min={0} max={1000} defaultValue={[100, 500]} step={10} />
+        <FormSlider defaultValue={[100, 500]} max={1000} min={0} step={10} />
         <FormMessage />
       </FormFieldItem>
       <Button type='submit'>Apply Price Filter</Button>

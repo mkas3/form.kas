@@ -1,14 +1,14 @@
-import React from 'react';
 import type { Metadata, Viewport } from 'next';
 
-import { Footer } from '@/app/_components/footer';
 import { Link } from '@/components/ui/link';
 import { PageWrapper } from '@/components/ui/page-wrapper';
 import { Toaster } from '@/components/ui/sonner';
 import { siteConfig } from '@/config/site';
+
 import { fontMono, fontSans } from '@/lib/fonts';
 import { cn } from '@/lib/utils';
 
+import { Footer } from './_components/footer';
 import { Header } from './_components/header';
 import { ScreenIndicator } from './_components/screen-indicator';
 import { Sidebar } from './_components/sidebar';
@@ -89,7 +89,7 @@ export const viewport: Viewport = {
   ]
 };
 
-const RootLayout = ({ children }: { children: React.ReactNode }) => {
+export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang='en' suppressHydrationWarning>
       <body
@@ -109,10 +109,13 @@ const RootLayout = ({ children }: { children: React.ReactNode }) => {
             <Header />
             <main className='flex flex-1'>
               <Sidebar />
-              <PageWrapper>{children}</PageWrapper>
+              <PageWrapper>
+                {children}
+              </PageWrapper>
             </main>
             <Footer>
-              Built by{' '}
+              Built by
+              {' '}
               <Link
                 className='underline'
                 href={siteConfig.links.github}
@@ -131,5 +134,3 @@ const RootLayout = ({ children }: { children: React.ReactNode }) => {
     </html>
   );
 };
-
-export default RootLayout;

@@ -1,4 +1,5 @@
 export const ScreenIndicator = () => {
+  // eslint-disable-next-line node/prefer-global/process
   if (process.env.NODE_ENV === 'production') return null;
 
   return (

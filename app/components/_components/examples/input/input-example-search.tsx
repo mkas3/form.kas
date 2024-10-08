@@ -1,17 +1,16 @@
 'use client';
 
+import { Form } from '@/components/shared/form/form';
+import { FormFieldItem } from '@/components/shared/form/form-field-item';
+import { FormInput } from '@/components/shared/form/form-input';
+import { Button } from '@/components/ui/button';
+import { FormMessage } from '@/components/ui/form';
+import { useZodForm } from '@/hooks/use-zod-form';
 import { toast } from 'sonner';
 import { z } from 'zod';
 
-import { useZodForm } from '@/hooks/use-zod-form';
-import { Button } from '@/components/ui/button';
-import { FormMessage } from '@/components/ui/form';
-import { Form } from '@/components/ui/form/form';
-import { FormFieldItem } from '@/components/ui/form/form-field-item';
-import { FormInput } from '@/components/ui/form/form-input';
-
 const formSchema = z.object({
-  search: z.string().min(1, { message: 'Please type text.' }),
+  search: z.string().min(1, { message: 'Please type text.' })
 });
 
 type FormProps = z.infer<typeof formSchema>;

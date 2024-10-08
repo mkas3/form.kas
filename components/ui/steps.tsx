@@ -1,6 +1,7 @@
-import React, { forwardRef } from 'react';
+import { forwardRef } from 'react';
 
 import { Heading } from '@/components/ui/heading';
+
 import { cn } from '@/lib/utils';
 
 const Steps = forwardRef<HTMLDivElement, React.ComponentPropsWithoutRef<'div'>>(
@@ -35,8 +36,8 @@ Step.displayName = 'Step';
 const StepTitle = forwardRef<HTMLHeadingElement, React.ComponentPropsWithoutRef<typeof Heading>>(
   ({ className, ...props }, ref) => {
     return (
-      // eslint-disable-next-line jsx-a11y/heading-has-content
-      <Heading ref={ref} as='h3' className={cn('mb-4', className)} {...props} />
+
+      <Heading ref={ref} className={cn('mb-4', className)} as='h3' {...props} />
     );
   }
 );

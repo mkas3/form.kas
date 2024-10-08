@@ -1,14 +1,12 @@
-import React from 'react';
-
+import { Mark } from '@/components/shared/mark';
 import {
   Table,
   TableBody,
   TableCell,
   TableHead,
   TableHeader,
-  TableRow,
+  TableRow
 } from '@/components/ui/table';
-import { Mark } from '@/components/shared/mark';
 
 type ComponentProp = {
   prop: string;
@@ -20,10 +18,7 @@ type ComponentPropsProps = React.ComponentPropsWithoutRef<typeof Table> & {
   componentProps: ComponentProp[];
 };
 
-export const ComponentProps = ({
-  componentProps,
-  ...props
-}: ComponentPropsProps) => {
+export const ComponentProps = ({ componentProps, ...props }: ComponentPropsProps) => {
   return (
     <Table {...props}>
       <TableHeader>

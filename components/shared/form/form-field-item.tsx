@@ -1,5 +1,6 @@
-import React, { forwardRef } from 'react';
 import type { ControllerProps, FieldPath, FieldValues } from 'react-hook-form';
+
+import { forwardRef } from 'react';
 
 import { FormItem } from '@/components/ui/form';
 

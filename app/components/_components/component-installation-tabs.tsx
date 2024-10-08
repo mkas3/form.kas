@@ -1,22 +1,15 @@
 'use client';
 
 import { useEffect } from 'react';
-import { usePackageManagerStore } from '@/stores/package-manager.store';
 
 import { Tabs } from '@/components/ui/tabs';
+import { usePackageManagerStore } from '@/stores/package-manager.store';
 
-type ComponentInstallationTabsProps = React.ComponentPropsWithoutRef<
-  typeof Tabs
->;
+type ComponentInstallationTabsProps = React.ComponentPropsWithoutRef<typeof Tabs>;
 
-export const ComponentInstallationTabs = ({
-  ...props
-}: ComponentInstallationTabsProps) => {
-  const {
-    currentPackageManager,
-    setCurrentPackageManager,
-    initializePackageManager,
-  } = usePackageManagerStore();
+export const ComponentInstallationTabs = ({ ...props }: ComponentInstallationTabsProps) => {
+  const { currentPackageManager, setCurrentPackageManager, initializePackageManager }
+    = usePackageManagerStore();
 
   useEffect(() => {
     initializePackageManager();
@@ -26,11 +19,5 @@ export const ComponentInstallationTabs = ({
     setCurrentPackageManager(value);
   };
 
-  return (
-    <Tabs
-      value={currentPackageManager}
-      onValueChange={handleValueChange}
-      {...props}
-    />
-  );
+  return <Tabs value={currentPackageManager} onValueChange={handleValueChange} {...props} />;
 };

@@ -1,6 +1,5 @@
-import React from 'react';
-
 import { Heading } from '@/components/ui/heading';
+
 import { cn } from '@/lib/utils';
 
 type SubsectionProps = React.ComponentPropsWithoutRef<'div'> & {

@@ -1,12 +1,6 @@
 'use client';
 
-import { toast } from 'sonner';
-import { z } from 'zod';
-
-import { useZodForm } from '@/hooks/use-zod-form';
-import { Button } from '@/components/ui/button';
-import { FormMessage } from '@/components/ui/form';
-import { Form } from '@/components/ui/form/form';
+import { Form } from '@/components/shared/form/form';
 import {
   FormCombobox,
   FormComboboxContent,
@@ -15,18 +9,23 @@ import {
   FormComboboxGroupItem,
   FormComboboxInput,
   FormComboboxList,
-  FormComboboxTrigger,
-} from '@/components/ui/form/form-combobox';
-import { FormFieldItem } from '@/components/ui/form/form-field-item';
+  FormComboboxTrigger
+} from '@/components/shared/form/form-combobox';
+import { FormFieldItem } from '@/components/shared/form/form-field-item';
+import { Button } from '@/components/ui/button';
+import { FormMessage } from '@/components/ui/form';
+import { useZodForm } from '@/hooks/use-zod-form';
+import { toast } from 'sonner';
+import { z } from 'zod';
 
 const cities = [
   { id: '1', name: 'New York' },
   { id: '2', name: 'Los Angeles' },
-  { id: '3', name: 'Chicago' },
+  { id: '3', name: 'Chicago' }
 ];
 
 const formSchema = z.object({
-  city: z.string({ errorMap: () => ({ message: 'Please select a city.' }) }),
+  city: z.string({ errorMap: () => ({ message: 'Please select a city.' }) })
 });
 
 type FormProps = z.infer<typeof formSchema>;

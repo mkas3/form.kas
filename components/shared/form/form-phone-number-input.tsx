@@ -1,6 +1,8 @@
 'use client';
 
-import React, {
+import type { Country, Value } from 'react-phone-number-input';
+
+import {
   createContext,
   forwardRef,
   useCallback,
@@ -11,9 +13,7 @@ import React, {
   useState
 } from 'react';
 import { useController } from 'react-hook-form';
-import type { Country, Value } from 'react-phone-number-input';
 import PhoneInput from 'react-phone-number-input';
-import getUnicodeFlagIcon from 'country-flag-icons/unicode';
 
 import { FormControl, useFormField } from '@/components/ui/form';
 import { Input } from '@/components/ui/input';
@@ -25,6 +25,8 @@ import {
   SelectValue
 } from '@/components/ui/select';
 import { useFormDefaultValue } from '@/hooks/use-form-default-value';
+import getUnicodeFlagIcon from 'country-flag-icons/unicode';
+
 import { cn } from '@/lib/utils';
 
 type FormPhoneNumberInputContext = {
@@ -61,75 +63,79 @@ const FormCountrySelect = forwardRef<
     iconWrapperClassName?: string;
   }
 >(
-  (
-    {
-      value,
-      onChange,
-      options,
-      disabled,
-      readOnly,
-      children,
-      iconComponent: Icon,
-      withIcon = true,
-      unicodeFlags,
-      contentClassName,
-      itemClassName,
-      triggerClassName,
-      iconWrapperClassName,
-      ...props
-    },
-    ref
-  ) => {
-    const { country } = useFormPhoneInput();
+      (
+        {
+          value,
+          onChange,
+          options,
+          disabled,
+          readOnly,
+          children,
+          iconComponent: Icon,
+          withIcon = true,
+          unicodeFlags,
+          contentClassName,
+          itemClassName,
+          triggerClassName,
+          iconWrapperClassName,
+          ...props
+        },
+        ref
+      ) => {
+        const { country } = useFormPhoneInput();
 
-    const OptionsComponents = useMemo(() => {
-      return (
-        <>
-          {options.map(({ value, label, divider }) => (
-            <SelectItem
-              key={divider ? '|' : value || 'ZZ'}
-              className={cn(divider ? 'bg-current text-[1px] text-inherit' : '', itemClassName)}
-              disabled={divider}
-              value={divider ? '|' : value || 'ZZ'}
-            >
-              {label}
-            </SelectItem>
-          ))}
-        </>
+        const OptionsComponents = useMemo(() => {
+          return (
+            <>
+              {options.map(({ value, label, divider }) => (
+                <SelectItem
+                  key={divider ? '|' : value || 'ZZ'}
+                  className={cn(divider ? 'bg-current text-[1px] text-inherit' : '', itemClassName)}
+                  disabled={divider}
+                  value={divider ? '|' : value || 'ZZ'}
+                >
+                  {label}
+                </SelectItem>
+              ))}
+            </>
+          );
+        }, [itemClassName, options]);
+
+        return (
+          <Select value={country} onValueChange={onChange} {...props}>
+            <SelectTrigger className={cn('h-10 w-20 gap-x-2 px-3 py-1', triggerClassName)}>
+              <SelectValue asChild={withIcon}>
+                {withIcon
+                  ? (
+                      <div
+                        className={cn(
+                          'flex size-1/2 items-center justify-center *:flex *:aspect-square *:w-full',
+                          iconWrapperClassName
+                        )}
+                      >
+                        {unicodeFlags && value ? <>{getUnicodeFlagIcon(value)}</> : null}
+                        {!(unicodeFlags && value) && Icon
+                          ? (
+                              <Icon
+                                aspectRatio={unicodeFlags ? 1 : undefined}
+                                country={value}
+                                label={country ?? value ?? 'ZZ'}
+                                aria-hidden
+                              />
+                            )
+                          : null}
+                      </div>
+                    )
+                  : null}
+              </SelectValue>
+            </SelectTrigger>
+            <SelectContent ref={ref} className={contentClassName} align='center'>
+              {OptionsComponents}
+            </SelectContent>
+          </Select>
+        );
+      }
       );
-    }, [itemClassName, options]);
-
-    return (
-      <Select value={country} onValueChange={onChange} {...props}>
-        <SelectTrigger className={cn('h-10 w-20 gap-x-2 px-3 py-1', triggerClassName)}>
-          <SelectValue asChild={withIcon}>
-            {withIcon ? (
-              <div
-                className={cn(
-                  'flex size-1/2 items-center justify-center *:flex *:aspect-square *:w-full',
-                  iconWrapperClassName
-                )}
-              >
-                {unicodeFlags && value ? <>{getUnicodeFlagIcon(value)}</> : null}
-                {!(unicodeFlags && value) && Icon ? (
-                  <Icon
-                    aspectRatio={unicodeFlags ? 1 : undefined}
-                    country={value}
-                    label={country ?? value ?? 'ZZ'}
-                    aria-hidden
-                  />
-                ) : null}
-              </div>
-            ) : null}
-          </SelectValue>
-        </SelectTrigger>
-        <SelectContent ref={ref} align='center' className={contentClassName}>
-          {OptionsComponents}
-        </SelectContent>
-      </Select>
-    );
-  }
-);
 FormCountrySelect.displayName = 'CountrySelectWithIcon';
 
 const FormPhoneNumberInputArea = forwardRef<
@@ -152,9 +158,9 @@ FormPhoneNumberContainer.displayName = 'PhoneNumberContainer';
 const FormPhoneNumberInput = forwardRef<
   React.ElementRef<typeof PhoneInput>,
   Omit<React.ComponentPropsWithoutRef<typeof PhoneInput>, 'onChange'> &
-    Partial<Pick<React.ComponentPropsWithoutRef<typeof PhoneInput>, 'onChange'>> & {
-      defaultPhoneNumber?: Value | string;
-    }
+  Partial<Pick<React.ComponentPropsWithoutRef<typeof PhoneInput>, 'onChange'>> & {
+    defaultPhoneNumber?: string | Value;
+  }
 >(
   (
     {
